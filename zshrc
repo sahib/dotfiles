@@ -33,7 +33,7 @@ export EDITOR="vim"
 #Setting to links because this is only important for man pages 
 export BROWSER=links 
 
-# for.. wahtever.. 
+# for.. whatever.. 
 export XTERM="urxvt +sb"
 export TERM=xterm-256color
 
@@ -43,11 +43,9 @@ bindkey '^E' end-of-line
 bindkey '^[[5~' up-line-or-history
 bindkey '^i' expand-or-complete-prefix
 
-
-alias nexuiz='/usr/bin/game.sh /home/chris/HD/Games/Nexuiz/2.5NexuizSVN/trunk/nexuiz-linux-glx.sh'
-alias vg='valgrind --leak-check=full --leak-resolution=high --num-callers=40'
-alias chat='irssi -c irc.freenode.net -n sahib -h bommelig'
-alias zchat='urxvt +sb -name irssi -e chat'
+alias irc='irssi'
+alias chat='profanity'
+alias mail='alot'
 alias glibvg='G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind --leak-check=full --show-possibly-lost=no'
 alias ncmpc='ncmpc -c'
 
@@ -69,37 +67,19 @@ export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 export SUDO_EDITOR="/usr/bin/vim -p -X"
 
 alias ll=ls++
-alias waf='python waf'
 
 # Vim Server/Client
 alias vims='gvim --servername GVIM --remote-tab'
 alias gvim='gvim --servername GVIM'
 
-# powerline zsh prompt
-#source /usr/share/zsh/site-contrib/powerline.zsh
-#
-#
-alias cd_bachelor='cd ~/dev/sphinxtr; git checkout bachelor'
-alias cd_projekt='cd ~/dev/sphinxtr; git checkout projekt'
-
 # this is deprecated
 export GREP_OPTIONS=
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
-alias sd='fasd -sid'     # interactive directory selection
-alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
-
-fzfr() { fzf -m -x | xargs -d'\n' -r "$@" ; }
-
-
+# Go stuff:
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GOBIN=$GOPATH/bin
+
+# brig stuff:
 alias brig-task="TASKRC=~/.brig-taskrc task"
 alias brig-vit="TASKRC=~/.brig-taskrc vit"
