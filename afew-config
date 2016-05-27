@@ -1,0 +1,6 @@
+[SpamFilter]
+#[ClassifyingFilter]
+[KillThreadsFilter]
+[ListMailsFilter]
+[ArchiveSentMailsFilter]
+[InboxFilter]

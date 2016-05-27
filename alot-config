@@ -1,0 +1,30 @@
+quit_on_last_bclose = False
+
+[bindings]
+    q = bclose
+    Q = exit
+    R = shellescape --thread=true --refocus=true ~/bin/mail-update.sh; refresh 
+    u = search tag:unread
+    / = prompt 'search '
+
+[accounts]
+    [[ira]]
+        realname = Christopher Pahl
+        address = sahib@online.de
+        aliases = christopher@ira-kunststoffe.de,
+        gpg_key = AF3D5DAC
+        sendmail_command = msmtp --account=ira -t
+        sent_box = maildir:///home/sahib/mail/ira/Sent
+        draft_box = maildir:///home/sahib/mail/ira/Drafts
+
+        [[[abook]]]
+            type = abook
+
+    [[hsa]]
+        realname = Christopher Pahl
+        address = christopher.pahl@hs-augsburg.de
+        sendmail_command = msmtp --account=hsa -t
+
+        [[[abook]]]
+            type = abook
+

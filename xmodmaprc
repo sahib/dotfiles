@@ -1,0 +1,7 @@
+! Alt_R + aAeEoOuUs für Umlaute auf US-Tastaturen. clear mod1 
+keycode 66 = Mode_switch Multi_key
+keycode 108 = Mode_switch
+keycode  38 = a A adiaeresis Adiaeresis
+keycode  30 = u U udiaeresis Udiaeresis
+keycode  32 = o O odiaeresis Odiaeresis
+keycode  39 = s S ssharp

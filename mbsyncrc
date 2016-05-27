@@ -1,0 +1,43 @@
+IMAPAccount ira
+Host imap.1und1.de
+User christopher@ira-kunststoffe.de
+PassCmd "secret-tool lookup imap ira"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore ira-remote
+Account ira
+
+MaildirStore ira-local
+Path ~/mail/ira/
+Inbox ~/mail/ira/Inbox
+
+Channel ira
+Master :ira-remote:
+Slave :ira-local:
+Patterns *
+Create Both
+SyncState *
+
+##################
+
+IMAPAccount hsa
+Host mail.hs-augsburg.de
+User sahib
+PassCmd "secret-tool lookup imap hsa"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore hsa-remote
+Account hsa
+
+MaildirStore hsa-local
+Path ~/mail/hsa/
+Inbox ~/mail/hsa/Inbox
+
+Channel hsa
+Master :hsa-remote:
+Slave :hsa-local:
+Create Both
+SyncState *
+Patterns  INBOX Trash hsa_archive Sent Drafts
