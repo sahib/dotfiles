@@ -1,7 +1,7 @@
 IMAPAccount ira
 Host imap.1und1.de
 User christopher@ira-kunststoffe.de
-PassCmd "secret-tool lookup imap ira"
+PassCmd "pass imap/ira/christopher"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -24,7 +24,7 @@ SyncState *
 IMAPAccount hsa
 Host mail.hs-augsburg.de
 User sahib
-PassCmd "secret-tool lookup imap hsa"
+PassCmd "pass imap/hsa/christopher"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
