@@ -8,7 +8,7 @@ if [[ -d ~/mail ]]; then
 fi
 
 echo "-- Installing mail packages:"
-install_package isync msmtp
+install_package isync msmtp abook
 install_package notmuch 
 install_package alot
 install_package afew
@@ -19,5 +19,7 @@ symlink ~/dotfiles/mbsyncrc ~/.mbsyncrc
 symlink ~/dotfiles/notmuch-config ~/.notmuch-config
 symlink ~/dotfiles/alot-config ~/.config/alot/config
 symlink ~/dotfiles/afew-config ~/.config/afew/config
+
+symlink /run/media/sahib/secret/abook ~/.abook
 
 echo "-- Done. Reload i3 to enable automatic mail syncing."
