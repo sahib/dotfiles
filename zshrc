@@ -83,3 +83,5 @@ export GOBIN=$GOPATH/bin
 # brig stuff:
 alias brig-task="TASKRC=~/.brig-taskrc task"
 alias brig-vit="TASKRC=~/.brig-taskrc vit"
+
+export GPG_TTY=$(tty)

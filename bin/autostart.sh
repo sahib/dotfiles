@@ -5,6 +5,7 @@ xmodmap ~/.xmodmaprc
 
 nm-applet &
 kupfer &
+udiskie -s &
 
 # Make sure no other notify daemon runs:
 pkill xfce4-notifyd

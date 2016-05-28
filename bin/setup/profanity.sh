@@ -6,4 +6,4 @@ install_package profanity
 
 echo "-- Linking config files:"
 symlink ~/dotfiles/profrc ~/.config/profanity/profrc
-symlink ~/dotfiles/secret/profanity/ ~/.local/share
+symlink /run/media/sahib/secret/profanity/ ~/.local/share

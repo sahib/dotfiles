@@ -3,4 +3,4 @@
 source ~/bin/setup/util.sh
 
 install_package irssi
-symlink ~/dotfiles/secret/irssi ~/.irssi
+symlink /run/media/sahib/secret/irssi ~/.irssi
