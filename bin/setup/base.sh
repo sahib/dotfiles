@@ -5,7 +5,7 @@ ln -s ~/dotfiles/bin ~/bin
 source ~/bin/setup/util.sh
 
 # Install base utilites:
-install_package git vim pass zsh
+install_package git gvim pass zsh
 install_package dmenu feh sxiv gnome-terminal udiskie
 install_package go redshift task 
 
