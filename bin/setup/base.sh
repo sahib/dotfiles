@@ -8,9 +8,6 @@ source ~/bin/setup/util.sh
 install_package git gvim pass zsh
 install_package dmenu feh sxiv gnome-terminal udiskie
 install_package go redshift task 
-
-# AUR:
-install_package vit
 install_package kupfer
 install_package twmn-git
 
@@ -22,6 +19,7 @@ echo "-- Symlinking basic config files..."
 symlink ~/dotfiles/zshrc ~/.zshrc
 symlink ~/dotfiles/gitconfig ~/.gitconfig
 symlink ~/dotfiles/xmodmaprc ~/.xmodmaprc
+symlink ~/dotfiles/twmn.conf ~/.config/twmn/twmn.conf
 
 symlink /run/media/sahib/secret/password-store ~/.password-store/
 symlink /run/media/sahib/secret/ssh ~/.ssh
