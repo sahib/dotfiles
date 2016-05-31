@@ -1,0 +1,4 @@
+text/html;  w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
+application/pdf; evince '%s'
+text/*; vim '%s'
+*/*; xdg-open "%s"

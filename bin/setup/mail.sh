@@ -19,6 +19,7 @@ install_package w3m
 echo "-- Linking config files:"
 symlink ~/dotfiles/msmtprc ~/.msmtprc
 symlink ~/dotfiles/mbsyncrc ~/.mbsyncrc
+symlink ~/dotfiles/mailcap ~/.mailcap
 symlink ~/dotfiles/notmuch-config ~/.notmuch-config
 symlink ~/dotfiles/alot-config ~/.config/alot/config
 symlink ~/dotfiles/afew-config ~/.config/afew/config
