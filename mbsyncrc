@@ -9,8 +9,8 @@ IMAPStore ira-remote
 Account ira
 
 MaildirStore ira-local
-Path ~/mail/ira/
-Inbox ~/mail/ira/Inbox
+Path ~/.mail/ira/
+Inbox ~/.mail/ira/Inbox
 
 Channel ira
 Master :ira-remote:
@@ -32,8 +32,8 @@ IMAPStore hsa-remote
 Account hsa
 
 MaildirStore hsa-local
-Path ~/mail/hsa/
-Inbox ~/mail/hsa/Inbox
+Path ~/.mail/hsa/
+Inbox ~/.mail/hsa/Inbox
 
 Channel hsa
 Master :hsa-remote:

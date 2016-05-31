@@ -21,5 +21,6 @@ symlink ~/dotfiles/alot-config ~/.config/alot/config
 symlink ~/dotfiles/afew-config ~/.config/afew/config
 
 symlink /run/media/sahib/secret/abook ~/.abook
+symlink /run/media/sahib/secret/mail ~/.mail
 
 echo "-- Done. Reload i3 to enable automatic mail syncing."

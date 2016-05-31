@@ -3,6 +3,10 @@
 sh ~/.fehbg
 xmodmap ~/.xmodmaprc
 
+# enable screen powersaving:
+xset +dpms
+xset dpms 0 0 300
+
 nm-applet &
 kupfer &
 udiskie -s &
