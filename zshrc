@@ -23,6 +23,14 @@ export ZSH_THEME="norm"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git ssh-agent zsh-syntax-highlighting cp lastest-working-dir python taskwarrior)
 
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
