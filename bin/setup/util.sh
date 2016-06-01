@@ -4,7 +4,7 @@ function install_package() {
     local YAOURT_LOG=`mktemp`
 
     echo "-- Installing: $*"
-    yaourt -S --noconfirm $* 2>&1 > ${YAOURT_LOG}
+    yaourt -S --needed --noconfirm $* 2>&1 > ${YAOURT_LOG}
 
     if [[ $? != 0 ]]; then 
         echo "-- yaourt failed :( - Showing log:"

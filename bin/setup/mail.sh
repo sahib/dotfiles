@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ~/bin/setup/util.sh
+
 if [[ -d ~/mail ]]; then
     echo "-- You might want to rsync the ~/mail dir first."
     echo "-- Iniial syncing and indexing might take some time otherwise."
@@ -10,8 +12,9 @@ fi
 echo "-- Installing mail packages:"
 install_package isync msmtp abook
 install_package notmuch 
-install_package alot
-install_package afew
+install_package alot-git
+install_package afew-git
+install_package w3m
 
 echo "-- Linking config files:"
 symlink ~/dotfiles/msmtprc ~/.msmtprc
