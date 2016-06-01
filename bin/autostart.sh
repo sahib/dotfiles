@@ -4,6 +4,7 @@ sh ~/.fehbg
 xmodmap ~/.xmodmaprc
 
 # enable screen powersaving:
+xfce4-power-manager
 xset +dpms
 xset dpms 0 0 300
 

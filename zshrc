@@ -87,9 +87,50 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GOBIN=$GOPATH/bin
 
-# brig stuff:
-alias brig-task="TASKRC=~/.brig-taskrc task"
-alias brig-vit="TASKRC=~/.brig-taskrc vit"
+function tunnel_balder() {
+    if [[ -z ${1} ]]; then
+        echo "!! Need a port to tunnel"
+        return 1
+    fi
+
+    local sock_path=/tmp/.balder-ssh-${1}.socket
+
+    if [[ ! -e "${sock_path}" ]]; then 
+        echo "** Tunneling port ${1} of balder through SSH..."
+        ssh -p2200 -M -S ${sock_path} -fnNT -L ${1}:192.168.23.40:${1} wald@catflix.spdns.org || return 2
+    fi
+
+    return 0
+}
+
+# Taskwarrior stuff:
+alias task="tunnel_balder 53589 && \task"
+alias vit="tunnel_balder 53589 && \vit"
+alias brig-task="tunnel_balder 53589 && TASKRC=~/.brig-taskrc \task"
+alias brig-vit="tunnel_balder 53589 && TASKRC=~/.brig-taskrc \vit"
 
 export GPG_TTY=$(tty)
 export TERMINAL=gnome-terminal
+
+function mount-music() {
+    sshfs -o ro -o workaround=all -o reconnect -p2200 wald@catflix.spdns.org:/home/wald/music ~/music
+    sleep 1 && mpd
+}
+
+function unmount-music() {
+    pkill -9 sshfs
+    pkill mpd
+    fusermount ~/music
+}
+
+function mount-secret() {
+    sudo cryptsetup luksOpen /dev/disk/by-label/secret secret
+    sudo mkdir -p /run/media/sahib/secret
+    sudo mount /dev/mapper/secret /run/media/sahib/secret
+}
+
+function unmount-secret() {
+    sudo umount -l /run/media/sahib/secret
+}
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

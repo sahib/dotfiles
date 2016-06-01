@@ -2,10 +2,9 @@
 
 source ~/bin/setup/util.sh
 
-#TODO: start
-install_package mpd ncmpcpp
-symlink dotfiles/ncmpcpp ~/.ncmpcpp
-symlink dotfiles/mpd.conf ~/.config/mpd/mpd.conf
+install_package mpd mpc ncmpcpp
+symlink ~/dotfiles/ncmpcpp ~/.ncmpcpp
+symlink ~/dotfiles/mpd.conf ~/.config/mpd/mpd.conf
 
 mkdir -p ~/.config/mpd/playlists
 touch ~/.config/mpd/mpd.log
