@@ -84,3 +84,4 @@ alias brig-task="TASKRC=~/.brig-taskrc task"
 alias brig-vit="TASKRC=~/.brig-taskrc vit"
 
 export GPG_TTY=$(tty)
+export TERMINAL=gnome-terminal

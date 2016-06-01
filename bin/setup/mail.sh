@@ -12,7 +12,7 @@ fi
 echo "-- Installing mail packages:"
 install_package isync msmtp abook
 install_package notmuch 
-install_package alot
+install_package alot-git
 install_package afew-git
 install_package w3m
 
