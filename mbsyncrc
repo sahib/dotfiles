@@ -40,4 +40,5 @@ Master :hsa-remote:
 Slave :hsa-local:
 Create Both
 SyncState *
-Patterns  INBOX Trash hsa_archive Sent Drafts
+#Patterns  INBOX Trash hsa_archive Sent Drafts
+#Patterns *
