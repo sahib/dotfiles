@@ -109,6 +109,8 @@ alias vit="tunnel_balder 53589 && \vit"
 alias brig-task="tunnel_balder 53589 && TASKRC=~/.brig-taskrc \task"
 alias brig-vit="tunnel_balder 53589 && TASKRC=~/.brig-taskrc \vit"
 
+alias lock='dm-tool lock && systemctl suspend -i'
+
 export GPG_TTY=$(tty)
 export TERMINAL=gnome-terminal
 
@@ -120,7 +122,7 @@ function mount-music() {
 function unmount-music() {
     pkill -9 sshfs
     pkill mpd
-    fusermount ~/music
+    fusermount -uz ~/music
 }
 
 function mount-secret() {
