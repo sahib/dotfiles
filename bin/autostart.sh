@@ -4,6 +4,7 @@ sh ~/.fehbg
 xmodmap ~/.xmodmaprc
 
 # enable screen powersaving:
+xfce4-power-manager
 xset +dpms
 xset dpms 0 0 300
 
@@ -23,3 +24,5 @@ redshift &
 # Periodically look for mail:
 pkill mail-update-loop.sh
 . ~/bin/mail-update-loop.sh
+
+gocode 

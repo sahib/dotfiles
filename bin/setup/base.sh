@@ -6,8 +6,9 @@ source ~/bin/setup/util.sh
 
 # Install base utilites:
 install_package git gvim pass zsh tig
+install_package zsh-syntax-highlighting
 install_package dmenu feh sxiv gnome-terminal udiskie
-install_package go redshift task 
+install_package go redshift ranger
 install_package kupfer
 install_package twmn-git
 
