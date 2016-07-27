@@ -23,7 +23,6 @@ theme=boothj5
 beep=false
 flash=false
 wrap=true
-time=%d-%m-%y %H:%M
 time.statusbar=%H:%M:%S
 resource.title=true
 resource.message=true
@@ -45,6 +44,13 @@ intype=true
 enc.warn=true
 wins.autotidy=true
 
+time.console=%d-%m-%y %H:%M
+time.chat=%d-%m-%y %H:%M
+time.muc=%d-%m-%y %H:%M
+time.mucconfig=%d-%m-%y %H:%M
+time.private=%d-%m-%y %H:%M
+time.xmlconsole=%d-%m-%y %H:%M
+
 [chatstates]
 enabled=false
 
@@ -56,3 +62,6 @@ pgp.char=%
 
 [alias]
 q=/quit
+
+[plugins]
+load=catlight.py;

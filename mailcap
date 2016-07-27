@@ -1,4 +1,6 @@
 text/html;  w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
 application/pdf; evince '%s'
+image/png; sxiv '%s'
+image/jpeg; sxiv '%s'
 text/*; vim '%s'
 */*; xdg-open "%s"

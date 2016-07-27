@@ -1,9 +1,11 @@
 quit_on_last_bclose = False
+initial_command = "search tag:inbox AND NOT tag:killed"
 
 [bindings]
     q = bclose
     Q = exit
-    R = shellescape --thread=true --refocus=true ~/bin/mail-update.sh; refresh 
+    R = shellescape --thread=true --refocus=true ~/bin/mail-update.sh; search tag:inbox AND NOT tag:killed
+    r = search tag:inbox AND NOT tag:killed
     u = search tag:unread
     / = prompt 'search '
 

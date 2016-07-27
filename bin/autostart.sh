@@ -26,3 +26,4 @@ pkill mail-update-loop.sh
 . ~/bin/mail-update-loop.sh
 
 gocode 
+catlightd &

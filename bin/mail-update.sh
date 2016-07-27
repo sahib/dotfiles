@@ -21,4 +21,6 @@ print_progress "Fetching email" "mbsync --quiet --all"
 print_progress "Indexing new mails" "notmuch new --quiet"
 print_progress "Re-tagging new mails" "afew --tag --new"
 
-printf "\n${YELLOW}=>${GREEN} %d${RESET} unread mails.\n" $(notmuch search tag:unread | wc -l)
+UNREAD=$(notmuch search tag:unread | wc -l)
+printf "\n${YELLOW}=>${GREEN} %d${RESET} unread mails.\n" $UNREAD
+catlightctl $(printf 'flash{0.25s|{255,0,255}|%d}' $UNREAD)
