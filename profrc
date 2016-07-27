@@ -51,8 +51,5 @@ enabled=false
 outtype=false
 gone=0
 
-[pgp]
-pgp.char=%
-
 [alias]
 q=/quit

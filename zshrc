@@ -120,6 +120,7 @@ function mount-music() {
 }
 
 function unmount-music() {
+    sync
     pkill -9 sshfs
     pkill mpd
     fusermount -uz ~/music
@@ -127,11 +128,13 @@ function unmount-music() {
 
 function mount-secret() {
     sudo cryptsetup luksOpen /dev/disk/by-label/secret secret
+    sudo fsck -y /dev/mapper/secret
     sudo mkdir -p /run/media/sahib/secret
     sudo mount /dev/mapper/secret /run/media/sahib/secret
 }
 
 function unmount-secret() {
+    sync
     sudo umount -l /run/media/sahib/secret
 }
 
