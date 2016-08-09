@@ -52,7 +52,7 @@ time.private=%d-%m-%y %H:%M
 time.xmlconsole=%d-%m-%y %H:%M
 
 [chatstates]
-enabled=false
+enabled=true
 
 outtype=false
 gone=0
