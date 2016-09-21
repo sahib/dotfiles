@@ -115,6 +115,7 @@ export GPG_TTY=$(tty)
 export TERMINAL=gnome-terminal
 
 function mount-music() {
+    pkill -9 mpd
     sshfs -o ro -o workaround=all -o reconnect -p2200 wald@catflix.spdns.org:/home/wald/music ~/music
     sleep 1 && mpd
 }

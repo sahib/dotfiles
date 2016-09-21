@@ -78,21 +78,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'fatih/vim-go'
 
 Plug 'vim-scripts/c.vim'
-
-
-"" ====================
-"" SAHIB MODIFIED PLUGS
-"" ====================
-
-Plug 'godlygeek/tabular'
-Plug 'chriskempson/base16-vim'
-Plug 'flazz/vim-colorschemes'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'szw/vim-ctrlspace'
-Plug 'vim-scripts/a.vim'
-Plug 'vim-scripts/ack.vim'
-Plug 'jdkanani/vim-material-theme'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'ervandew/supertab'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local_bundles.vim"))
@@ -469,7 +455,7 @@ let g:tagbar_type_go = {
 
 " vim-go
 augroup FileType go
-  au!
+au!
   au FileType go nmap gd <Plug>(go-def)
   au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
 
@@ -530,23 +516,3 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-
-" =========================
-" SAHIBS OWN CUSTOMIZATIONS
-" =========================
-
-"window management
-au FocusLost * :silent! wall "save if focus lost
-au VimResized * :wincmd = "also resize split windows on resize
-
-"easy split window navigation
-nmap <silent> <C-Up> :wincmd k<CR>
-nmap <silent> <C-Down> :wincmd j<CR>
-nmap <silent> <C-Left> :wincmd h<CR>
-nmap <silent> <C-Right> :wincmd l<CR>
-set wmh=0 "Make Windows resizeable to statusline only
-set t_Co=256
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=light " or dark
-colorscheme solarized
