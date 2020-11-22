@@ -88,5 +88,5 @@ alias bob='brig --repo /tmp/bob'
 source ~/code/brig/autocomplete/zsh_autocomplete
 
 # Make fzf pretty by default:
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat --style=numbers --color=always --line-range :100 --theme=\"gruvox-light\" {}'"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat --style=numbers --color=always --line-range :100 --theme=\"gruvbox-light\" {}'"
 alias gdk='git difftool --no-symlinks --dir-diff'
