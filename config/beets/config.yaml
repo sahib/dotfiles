@@ -1,0 +1,6 @@
+directory: ~/music/selected
+library: ~/music/beets.db
+import:
+    copy: no
+
+plugins: fetchart lyrics lastgenre
