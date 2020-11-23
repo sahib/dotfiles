@@ -20,4 +20,5 @@ sudo pacman -S \
     powerline-fonts \
     ttf-fira-code \
     fzf \
+    wofi
 ```
