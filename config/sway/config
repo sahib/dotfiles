@@ -15,7 +15,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec wofi --allow-images --hide-scroll --show drun --lines 10 --style ~/.config/sway/wofi.css
 
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
@@ -191,8 +191,8 @@ bar {
 exec gammastep
 
 # Extra keybinds:
-bindsym $mod+F9  exec swaylock -c '#000000' -f
-bindsym $mod+F12 exec swaylock -c '#000000' -f && systemctl suspend
+bindsym $mod+F9  exec swaylock --image ~/code/dotfiles/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f
+bindsym $mod+F12 exec swaylock --image ~/code/dotfiles/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f && systemctl suspend
 
 output "*" bg ~/code/dotfiles/wallpaper.jpg fill
 output eDP-1    mode 1920x1080 pos 0,0
