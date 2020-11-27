@@ -1,0 +1,167 @@
+// -*- mode: json -*-
+{
+	"layer": "bottom",
+	"position": "top",
+	"modules-left": [
+		"sway/workspaces",
+		// "wlr/taskbar",
+		"sway/mode",
+		"idle_inhibitor"
+	],
+	"modules-center": [
+		"clock",
+		"custom/pacman"
+	],
+	"modules-right": [
+		"cpu",
+        "custom/load",
+		"memory",
+		"custom/swap",
+        "network",
+		"disk#1",
+		"pulseaudio",
+		"backlight",
+		"battery",
+        "temperature",
+		"tray"
+	],
+	"sway/workspaces": {
+		"disable-scroll": true,
+ 		"all-outputs": true,
+ 		"format": "{name} {icon}",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"urgent": "",
+			"focused": "",
+			"default": ""
+		}
+	},
+	"sway/mode": {
+		"format": "{}"
+	},
+	"backlight": {
+		"format": "{icon} {percent}%",
+		"format-icons": ["", ""],
+		"on-scroll-up": "brightnessctl set +5%",
+		"on-scroll-down": "brightnessctl set 5%-"
+	},
+	"wlr/taskbar": {
+		"all-outputs": true,
+		"format": "{icon}",
+		"icon-size": 12,
+		"on-click": "activate",
+		"on-click-right": "fullscreen",
+		"on-click-middle": "close"
+	},
+	"clock": {
+		"format": "{:%a %d %b %H:%M}",
+		"tooltip": true
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%  {format_source}",
+		"format-bluetooth": "{icon} {volume}%  {format_source}",
+		"format-bluetooth-muted": " {icon}  {format_source}",
+		"format-muted": " {format_source}",
+		"format-source": " {volume}%",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
+		"on-click": "pavucontrol"
+	},
+	"memory": {
+		"interval": 5,
+		"format": " {}%"
+	},
+	"cpu": {
+		"interval": 1,
+		"format": "🖳 {usage:2}%"
+	},
+	"custom/load": {
+		"interval": 5,
+		"format": "𐄷 {}",
+        "exec": "cat /proc/loadavg | cut -d' ' -f2"
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+        "tooltip": "If active, do not lock screen",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"disk#1": {
+		"interval": 5,
+		"format": "  {percentage_used:2}%",
+		"path": "/"
+	},
+	"tray": {
+		"icon-size": 12,
+		"spacing": 10
+	},
+	"custom/pacman": {
+		"format": "  {}",
+		"interval": 900, // every 15 minutes
+		"exec": "checkupdates | wc -l", // # of updates
+		"exec-if": "exit 0", // always run; consider advanced run conditions
+		"signal": 8,
+		"tooltip": false
+	},
+	"custom/swap": {
+		"format": " {}",
+		"interval": 5,
+		"exec": "free -h | grep Swap | awk '{print $3}'"
+	},
+	"custom/spotify": {
+		"interval": 1,
+		"return-type": "json",
+		"exec": "~/.config/waybar/modules/spotify.sh",
+		"exec-if": "pgrep spotify",
+		"escape": true
+	},
+    "network": {
+        "format-ethernet": "",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 75,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
+    }
+}

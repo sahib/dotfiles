@@ -20,5 +20,13 @@ sudo pacman -S \
     powerline-fonts \
     ttf-fira-code \
     fzf \
-    wofi
+    wofi \
+    wl-clipboard \
+    grim \
+    slurp \
+    otf-font-awesome \
+    brightnessctl
+
+yay -S \
+    grimshot-git
 ```

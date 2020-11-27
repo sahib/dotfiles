@@ -14,10 +14,8 @@ bindsym $mod+Return exec kitty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
+# start program launcher
 bindsym $mod+d exec wofi --allow-images --hide-scroll --show drun --lines 10 --style ~/.config/sway/wofi.css
-
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -69,16 +67,16 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "😁 1"
-set $workspace2 "😀 2"
-set $workspace3 "😒 3"
-set $workspace4 "😆 4"
-set $workspace5 "😥 5"
-set $workspace6 "😳 6"
-set $workspace7 "😉 7"
-set $workspace8 "🙄 8"
-set $workspace9 "😤 9"
-set $workspace10 "🙏"
+set $workspace1  "1"
+set $workspace2  "2"
+set $workspace3  "3"
+set $workspace4  "4"
+set $workspace5  "5"
+set $workspace6  "6"
+set $workspace7  "7"
+set $workspace8  "8"
+set $workspace9  "9"
+set $workspace10 "0"
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -140,8 +138,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Show a bit of wallpaper:
-gaps outer 10
+gaps outer 5
 gaps inner 10
+smart_gaps off
 
 # For solarized light colors see:
 # http://www.zovirl.com/2011/07/22/solarized_cheat_sheet/
@@ -162,33 +161,16 @@ set $blue	 #268bd2
 set $cyan	 #2aa198
 set $green	 #859900
 
-# class                 border  backgr. text    indicator child_border
-client.focused          $base01 $green  $base02 $magenta  $base00
-client.focused_inactive $base01 $base2  $base00 $magenta  $base00
-client.unfocused        $base01 $base2  $base00 $magenta  $base00
+# class                 border  backgr.  text    indicator child_border
+client.focused          $base01 $green   $base02 $green    $base00
+client.focused_inactive $base01 $base2   $base00 $base2    $base00
+client.unfocused        $base01 $base2   $base00 $base2    $base00
+client.urgent           $base01 $magenta $base02 $magenta  $base00
 client.background       $base3
 
-
-# bar
 bar {
-  font pango:FiraCode-Medium 10
-  status_command i3blocks
-  position top
-  colors {
-    separator  $green
-    background $base3
-    statusline $base00
-
-    #                    border    backgr.   text
-    focused_workspace    $base00   $green    $base02
-    active_workspace     $base00   $cyan     $base02
-    inactive_workspace   $base00   $base2    $base02
-    urgent_workspace     $base00   $magenta  $base02
-  }
+    swaybar_command waybar
 }
-
-# make color easier on the eyes in the afternoon:
-exec gammastep
 
 # Extra keybinds:
 bindsym $mod+F9  exec swaylock --image ~/code/dotfiles/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f
@@ -201,5 +183,7 @@ output eDP-1    mode 1920x1080 pos 0,0
 # TODO: What to do with work monitors?
 output HDMI-A-2 mode 1920x1200 pos 1920,0
 
-# Configure keyboard input:
 input * xkb_layout us-german-umlaut
+
+# Increase scrolling speed:
+input type:pointer scroll_factor 2.0
