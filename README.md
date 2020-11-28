@@ -28,5 +28,6 @@ sudo pacman -S \
     brightnessctl
 
 yay -S \
-    grimshot-git
+    grimshot-git \
+    oguri
 ```

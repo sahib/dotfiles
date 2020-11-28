@@ -3,7 +3,7 @@ font=FiraCode-Bold 10
 background-color=#fdf6e3
 text-color=#657b83
 border-color=#586e75
-default-timeout=4000
+default-timeout=5000
 
 [urgency=high]
 text-color=#dc322f

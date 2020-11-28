@@ -1,0 +1,5 @@
+[output *]
+image=~/code/dotfiles/default-wallpaper.jpg
+filter=nearest
+scaling-mode=fill
+anchor=center

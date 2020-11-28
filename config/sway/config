@@ -176,12 +176,17 @@ bar {
 bindsym $mod+F9  exec swaylock --image ~/code/dotfiles/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f
 bindsym $mod+F12 exec swaylock --image ~/code/dotfiles/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f && systemctl suspend
 
-output "*" bg ~/code/dotfiles/wallpaper.jpg fill
-output eDP-1    mode 1920x1080 pos 0,0
+# Dynamically change the wallpaper based on the day hour:
+exec_always ~/code/dotfiles/wallday.sh
 
-# TODO: clamshell mode?
-# TODO: What to do with work monitors?
+# Set the default wallpaper via oguri too:
+swaybg_command oguri-swaybg
+output "*" bg ~/code/dotfiles/default-wallpaper.jpg fill
+
+output eDP-1    mode 1920x1080 pos 0,0
 output HDMI-A-2 mode 1920x1200 pos 1920,0
+output DPI-2    mode 1920x1200 pos 1920,0
+output DPI-3    mode 1920x1200 pos 1920,0
 
 input * xkb_layout us-german-umlaut
 
