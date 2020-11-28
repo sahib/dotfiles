@@ -37,5 +37,5 @@ while true; do
     done
 
     # This is a long running process.
-    sleep 3600
+    sleep 600
 done
