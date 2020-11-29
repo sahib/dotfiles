@@ -60,3 +60,9 @@ map <F11> :setlocal spell! <CR>
 " TODO: Remove when gocode performance got better.
 "       Makes autocompletion faster.
 let g:go_gocode_propose_source = 0
+
+set list
+set listchars=tab:>-
+
+" Small fix for the too dark listchars:
+highlight NonText guifg=#eee8d5

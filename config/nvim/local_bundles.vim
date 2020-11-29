@@ -20,3 +20,6 @@ Plug 'ruanyl/vim-gh-line'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'overcache/NeoSolarized'
+Plug 'isobit/vim-caddyfile'
+Plug 'kergoth/vim-bitbake'
+Plug 'ruanyl/vim-gh-line'
