@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This is a very simple script that takes a directory with 24 images in it and
+# This is a simple script that takes a directory with 24 images in it and
 # sets the current image based on the day hour on all connected outputs. Will
 # only work in sway and with oguri installed.
 
@@ -17,6 +17,9 @@ fi
 pkill oguri
 oguri &
 
+# For caching:
+LAST_INDEX=
+
 while true; do
     # Changes the wallpaper depending on the day hour.
     HOUR="$(date +%H)"
@@ -27,7 +30,13 @@ while true; do
     HOUR="$(echo "$HOUR" | sed 's/^0*//')"
 
     INDEX="$((HOUR % 24))"
-    echo "-- switching: $INDEX" >> /tmp/log
+    if [ "${LAST_INDEX}" = "${INDEX}" ]; then
+        sleep 5
+        continue
+    fi
+
+    LAST_INDEX="${INDEX}"
+    echo "-- switching: $INDEX"
 
     for output_name in $(swaymsg -t get_outputs | jq -r '.[] | .name'); do
         ogurictl output \
@@ -35,7 +44,4 @@ while true; do
             "${output_name}"
 
     done
-
-    # This is a long running process.
-    sleep 600
 done

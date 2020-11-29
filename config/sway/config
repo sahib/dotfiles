@@ -179,9 +179,9 @@ bindsym $mod+F12 exec swaylock --image ~/code/dotfiles/lock.jpg --font 'Ubuntu M
 # Dynamically change the wallpaper based on the day hour:
 exec_always ~/code/dotfiles/wallday.sh
 
-# Set the default wallpaper via oguri too:
-swaybg_command oguri-swaybg
-output "*" bg ~/code/dotfiles/default-wallpaper.jpg fill
+# Uncomment this if you want to set a static wallpaper:
+# swaybg_command oguri-swaybg
+# output "*" bg ~/code/dotfiles/default-wallpaper.jpg fill
 
 output eDP-1    mode 1920x1080 pos 0,0
 output HDMI-A-2 mode 1920x1200 pos 1920,0
@@ -192,3 +192,6 @@ input * xkb_layout us-german-umlaut
 
 # Increase scrolling speed:
 input type:pointer scroll_factor 2.0
+
+# List all windows here that should have default settings:
+for_window [app_id="gnome-calendar"] floating enable
