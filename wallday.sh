@@ -4,23 +4,10 @@
 # sets the current image based on the day hour on all connected outputs. Will
 # only work in sway and with oguri installed.
 
-LOCK_FILE=/tmp/.wallday.lock
-if [[ -f $LOCK_FILE ]]; then
-    echo "-- already running, exiting."
-    exit
-else
-    trap 'rm $LOCK_FILE' EXIT
-    touch "$LOCK_FILE"
-    chmod +644 "$LOCK_FILE"
-fi
-
-pkill oguri
-oguri &
-
 # For caching:
 LAST_INDEX=
 
-while true; do
+set_wallpaper_from_current_hour() {
     # Changes the wallpaper depending on the day hour.
     HOUR="$(date +%H)"
 
@@ -32,7 +19,7 @@ while true; do
     INDEX="$((HOUR % 24))"
     if [ "${LAST_INDEX}" = "${INDEX}" ]; then
         sleep 5
-        continue
+        return
     fi
 
     LAST_INDEX="${INDEX}"
@@ -44,4 +31,23 @@ while true; do
             "${output_name}"
 
     done
+}
+
+LOCK_FILE=/tmp/.wallday.lock
+if [[ -f $LOCK_FILE ]]; then
+    # Still update the wallpaper:
+    set_wallpaper_from_current_hour
+    echo "-- already running, exiting."
+    exit
+else
+    trap 'rm $LOCK_FILE' EXIT
+    touch "$LOCK_FILE"
+    chmod +644 "$LOCK_FILE"
+fi
+
+pkill oguri
+oguri &
+
+while true; do
+    set_wallpaper_from_current_hour
 done
