@@ -1,0 +1,181 @@
+/*
+ Solarized colors:
+
+    base03	 #002b36
+    base02	 #073642
+    base01	 #586e75
+    base00	 #657b83
+    base0	 #839496
+    base1	 #93a1a1
+    base2	 #eee8d5
+    base3	 #fdf6e3
+    yellow	 #b58900
+    orange	 #cb4b16
+    red      #dc322f
+    magenta  #d33682
+    violet	 #6c71c4
+    blue	 #268bd2
+    cyan	 #2aa198
+    green	 #859900
+*/
+
+* {
+	font-size: 12px;
+	font-family: Ubuntu;
+}
+
+window.eDP-1 * {
+	font-size: 13px;
+}
+
+window#waybar {
+	background: transparent;
+	color:  #073642;
+}
+
+#custom-pacman,
+#disk,
+#pulseaudio,
+#memory,
+#cpu {
+	font-family: "Symbols Nerd Font";
+}
+
+#workspaces,
+#mode,
+#window,
+#taskbar,
+#idle_inhibitor,
+#custom-weather,
+#pulseaudio,
+#memory,
+#cpu,
+#clock,
+#battery,
+#backlight,
+#disk,
+#custom-pacman,
+#custom-aur,
+#custom-swap,
+#custom-spotify,
+#temperature,
+#network,
+#custom-load,
+#tray {
+	padding: 0px 7px 0px 7px;
+	margin-top: 6px;
+	background: #eee8d5;
+	text-shadow: 1px 1px 2px rgba(147, 161, 161, 0.4);
+}
+
+#custom-load,
+#custom-swap,
+#disk,
+#backlight,
+#temperature {
+    /* Create strip effect on the right with lighter color */
+	background: #fdf6e3;
+}
+
+#temperature,
+#tray {
+	margin-right: 10px;
+	border-radius: 0px 4px 4px 0px;
+}
+
+#workspaces {
+	margin-left: 10px;
+	border-radius: 4px 0px 0px 4px;
+}
+
+#mode {
+	background: #d33682;
+}
+
+#disk.1,
+#memory {
+	padding-right: 3px;
+}
+#disk.2,
+#custom-swap {
+	padding-left: 3px;
+}
+
+#cpu {
+	border-radius: 4px 0px 0px 4px;
+}
+
+#clock {
+	border-radius: 4px 0px 0px 4px;
+	margin-right: 0px;
+	padding-right: 5px;
+    background-color: #eee8d5;
+}
+
+#custom-pacman {
+	border-radius: 0px 4px 4px 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+    background: #fdf6e3;
+}
+
+#custom-weather,
+#idle_inhibitor {
+	border-radius: 0px 4px 4px 0px;
+	margin-left: 0px;
+}
+
+/* WORKPLACE SETTINGS */
+
+#workspaces {
+	padding: 0px;
+}
+#workspaces button {
+	padding: 0px 5px 0px 5px;
+	border-radius: 0px;
+}
+#workspaces button.focused {
+	background: #268bd2;
+}
+#workspaces button:hover {
+	border: #d33682;
+	background: #93a1a1;
+}
+#workspaces button.active:hover {
+	background: #2aa198;
+	border: #fdf6e3;
+}
+
+#workspaces button#sway-workspace-1 {
+	border-radius: 4px 0px 0px 4px;
+}
+
+#workspaces button.visible {
+    /* Currently visible but not focused workplace */
+    background: #268bd2;
+}
+
+#workspaces button.focused {
+    /* Currently focused workspace */
+    background: #859900;
+}
+
+#workspaces button.urgent {
+    /* Workplace with urgent apps */
+    background: #d33682;
+}
+
+#taskbar {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+#taskbar button {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 7px;
+	padding-right: 3px;
+	border-radius: 0px;
+}
+#taskbar button.active {
+	background: #859900;
+}
