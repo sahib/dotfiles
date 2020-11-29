@@ -49,6 +49,10 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GOBIN=$GOPATH/bin
+
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export PATH="/usr/lib/cw:$PATH"
 export PATH="$GOBIN:$PATH"
