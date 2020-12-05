@@ -27,7 +27,7 @@ set_wallpaper_from_current_hour() {
 
     for output_name in $(swaymsg -t get_outputs | jq -r '.[] | .name'); do
         ogurictl output \
-            --image "${HOME}/code/dotfiles/wallday/$INDEX.png"  \
+            --image "${HOME}/wallday/images/$INDEX.png"  \
             "${output_name}"
 
     done

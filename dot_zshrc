@@ -11,9 +11,6 @@ export ZSH_THEME="norm"
 # Comment this out to disable weekly auto-update checks
 # export DISABLE_AUTO_UPDATE="true"
 
-# Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
-
 # Uncomment following line if you want to disable autosetting terminal title.
 # export DISABLE_AUTO_TITLE="true"
 
@@ -48,10 +45,6 @@ alias glibvg='G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind --leak-check=fu
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export GOBIN=$GOPATH/bin
 
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export PATH="/usr/lib/cw:$PATH"
@@ -96,3 +89,6 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat -
 alias gdk='git difftool --no-symlinks --dir-diff'
 
 [ -f "~/.zshrc.extra" ] && source "~/.zshrc.extra"
+
+alias l='exa --git --links --inode --header'
+alias ll='exa --git --links --inode --header -l'

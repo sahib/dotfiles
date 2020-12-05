@@ -58,7 +58,8 @@
 	},
 	"clock": {
 		"format": "{:%a %d %b %H:%M}",
-		"tooltip": true
+		"tooltip": true,
+        "on-click": "gnome-calendar"
 	},
 	"pulseaudio": {
 		"format": "{icon} {volume}%  {format_source}",
@@ -162,6 +163,7 @@
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 75,
         "format-critical": "{temperatureC}°C ",
-        "format": "{temperatureC}°C "
+        "format": "{temperatureC}°C ",
+        "tooltip": true
     }
 }

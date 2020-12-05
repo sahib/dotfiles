@@ -1,5 +1,5 @@
 [output *]
-image=~/code/dotfiles/default-wallpaper.jpg
+image=/usr/share/dynamic-wallpaper/images/firewatch/0.png
 filter=nearest
 scaling-mode=fill
 anchor=center

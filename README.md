@@ -25,7 +25,9 @@ sudo pacman -S \
     grim \
     slurp \
     otf-font-awesome \
-    brightnessctl
+    brightnessctl \
+    exa \
+    chezmoi
 
 yay -S \
     grimshot-git \

@@ -16,6 +16,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec wofi --allow-images --hide-scroll --show drun --lines 10 --style ~/.config/sway/wofi.css
+bindsym $mod+Shift+s exec grimshot --notify save area "$HOME/Documents/screenshot_$(date +%s).png"
 
 # change focus
 bindsym $mod+j focus left
@@ -173,15 +174,15 @@ bar {
 }
 
 # Extra keybinds:
-bindsym $mod+F9  exec swaylock --image ~/code/dotfiles/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f
-bindsym $mod+F12 exec swaylock --image ~/code/dotfiles/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f && systemctl suspend
+bindsym $mod+F9  exec swaylock --image ~/.config/wallday/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f
+bindsym $mod+F12 exec swaylock --image ~/.config/wallday/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f && systemctl suspend
 
 # Dynamically change the wallpaper based on the day hour:
-exec_always ~/code/dotfiles/wallday.sh
+exec_always ~/.config/wallday/wallday.sh
 
 # Uncomment this if you want to set a static wallpaper:
 # swaybg_command oguri-swaybg
-# output "*" bg ~/code/dotfiles/default-wallpaper.jpg fill
+# output "*" bg ~/.config/wallday/default-wallpaper.jpg fill
 
 output eDP-1    mode 1920x1080 pos 0,0
 output HDMI-A-2 mode 1920x1200 pos 1920,0
