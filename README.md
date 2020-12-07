@@ -37,29 +37,19 @@ yay -S \
 ## Installed fonts:
 
 ```bash
+```
 noto-fonts
 otf-fira-mono
 otf-font-awesome
 powerline-fonts
 ttf-caladea
 ttf-carlito
-ttf-courier-prime
-ttf-ddc-uchen
 ttf-dejavu
 ttf-droid
 ttf-font-awesome
-ttf-heuristica
-ttf-impallari-cantora
 ttf-liberation
 ttf-linux-libertine
-ttf-merriweather
-ttf-merriweather-sans
 ttf-nerd-fonts-symbols
 ttf-opensans
-ttf-oswald
-ttf-quintessential
-ttf-signika
-ttf-symbola
 ttf-ubuntu-font-family
-ttf-vollkorn-ibx
 ```
