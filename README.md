@@ -31,5 +31,5 @@ sudo pacman -S \
 
 yay -S \
     grimshot-git \
-    oguri
+    mpvpaper \
 ```

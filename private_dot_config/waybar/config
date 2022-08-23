@@ -4,11 +4,11 @@
 	"position": "top",
 	"modules-left": [
 		"sway/workspaces",
-		// "wlr/taskbar",
 		"sway/mode",
-		"idle_inhibitor"
 	],
 	"modules-center": [
+        "custom/weather",
+		"custom/playerctl",
 		"clock",
 		"custom/pacman"
 	],
@@ -57,7 +57,7 @@
 		"on-click-middle": "close"
 	},
 	"clock": {
-		"format": "{:%a %d %b %H:%M}",
+		"format": "⏱ {:%a %d %b %H:%M}",
 		"tooltip": true,
         "on-click": "gnome-calendar"
 	},
@@ -96,14 +96,6 @@
 		"format": "𐄷 {}",
         "exec": "cat /proc/loadavg | cut -d' ' -f2"
 	},
-	"idle_inhibitor": {
-		"format": "{icon}",
-        "tooltip": "If active, do not lock screen",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
-		}
-	},
 	"battery": {
 		"states": {
 			"good": 95,
@@ -141,12 +133,14 @@
 		"interval": 5,
 		"exec": "free -h | grep Swap | awk '{print $3}'"
 	},
-	"custom/spotify": {
+	"custom/playerctl": {
 		"interval": 1,
-		"return-type": "json",
-		"exec": "~/.config/waybar/modules/spotify.sh",
-		"exec-if": "pgrep spotify",
-		"escape": true
+		"exec": "~/.config/waybar/modules/playerctl.sh",
+		"exec-if": "pgrep playerctl",
+		"escape": true,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
 	},
     "network": {
         "format-ethernet": "",
@@ -159,11 +153,16 @@
         "tooltip-format-disconnected": "Disconnected"
     },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 75,
         "format-critical": "{temperatureC}°C ",
         "format": "{temperatureC}°C ",
         "tooltip": true
-    }
+    },
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "~/.config/waybar/modules/waybar-wttr.py",
+        "return-type": "json"
+    },
 }

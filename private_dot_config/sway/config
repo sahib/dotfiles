@@ -2,8 +2,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# font pango:monospace 8
-font pango:Ubuntu 12, Awesome 12
+font pango:FiraCode 11, Awesome 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -16,27 +15,16 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec wofi --allow-images --hide-scroll --show drun --lines 10 --style ~/.config/sway/wofi.css
-bindsym $mod+Shift+s exec grimshot --notify save area "$HOME/Documents/screenshot_$(date +%s).png"
+bindsym $mod+Shift+s exec grimshot --notify copy area
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+bindsym $mod+Tab workspace back_and_forth
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -106,9 +94,6 @@ bindsym $mod+0 workspace $workspace10
 # Reload the config:
 bindsym $mod+Shift+c reload
 
-# restart sway inplace:
-bindsym $mod+Shift+r restart
-
 # exit sway (logs you out of your X session)
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your X session.' -b 'Yes' 'swaymsg exit'"
 
@@ -139,12 +124,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Show a bit of wallpaper:
-gaps outer 5
-gaps inner 10
-smart_gaps off
+# gaps outer 0
+# gaps inner 0
+# smart_gaps on
 
 # For solarized light colors see:
 # http://www.zovirl.com/2011/07/22/solarized_cheat_sheet/
+# NOTE: The colors are mixed to 50% with base2 to soften the intensity.
 set $base03	 #002b36
 set $base02	 #073642
 set $base01	 #586e75
@@ -153,14 +139,19 @@ set $base0	 #839496
 set $base1	 #93a1a1
 set $base2	 #eee8d5
 set $base3	 #fdf6e3
-set $yellow	 #b58900
-set $orange	 #cb4b16
-set $red     #dc322f
-set $magenta #d33682
-set $violet	 #6c71c4
-set $blue	 #268bd2
-set $cyan	 #2aa198
-set $green	 #859900
+set $yellow	 #D1B86A
+set $orange	 #DC9975
+set $red     #E58D81
+set $magenta #E08FAB
+set $violet	 #ADACCC
+set $blue	 #8AB9D3
+set $cyan	 #8CC4B6
+set $green	 #B9C06A
+
+
+default_border pixel 3
+default_floating_border normal
+titlebar_border_thickness 0
 
 # class                 border  backgr.  text    indicator child_border
 client.focused          $base01 $green   $base02 $green    $base00
@@ -173,26 +164,77 @@ bar {
     swaybar_command waybar
 }
 
+
 # Extra keybinds:
-bindsym $mod+F9  exec swaylock --image ~/.config/wallday/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f
-bindsym $mod+F12 exec swaylock --image ~/.config/wallday/lock.jpg --font 'Ubuntu Mono' --show-failed-attempts -f && systemctl suspend
+bindsym $mod+F1 exec swaylock -f
+bindsym $mod+F2 exec swaylock -f && systemctl suspend
+
+bindsym $mod+F5 exec mpv --fullscreen --length=2 ~/badumts.mp4
+
+bindsym $mod+F7   exec playerctl -p playerctld previous
+bindsym $mod+F8   exec playerctl -p playerctld play-pause
+bindsym $mod+F9   exec playerctl -p playerctld next
+bindsym $mod+F10  exec playerctl -p playerctld volume 0
+bindsym $mod+F11  exec playerctl -p playerctld volume -0.1
+bindsym $mod+F12  exec playerctl -p playerctld volume +0.2
+
+bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
 # Dynamically change the wallpaper based on the day hour:
-exec_always ~/.config/wallday/wallday.sh
+# exec_always ~/wallday/wallday.sh
+
+# Somehow needed to fix a lag when starting applications:
+exec_always dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+# Execute this notification manager always:
+# (does stop when started twice)
+exec mako
 
 # Uncomment this if you want to set a static wallpaper:
 # swaybg_command oguri-swaybg
-# output "*" bg ~/.config/wallday/default-wallpaper.jpg fill
+output "*" bg ~/code/dotfiles/wallpaper.jpg fill
 
-output eDP-1    mode 1920x1080 pos 0,0
-output HDMI-A-2 mode 1920x1200 pos 1920,0
+# Private laptop screen:
+output 'Unknown 0x0561 0x00000000'           mode 1920x1080 pos 0,0
+
+# Private office monitor:
+output 'Hewlett Packard HP ZR24w CNT12211F4' mode 1920x1200 pos 1920,0
+
+# Work:
 output DPI-2    mode 1920x1200 pos 1920,0
-output DPI-3    mode 1920x1200 pos 1920,0
+output DPI-3    mode 3840x2160 pos 1920,0  scale 1.5
+output HDMI-A-2 mode 3840x2160 pos 1920,0  scale 1.5
 
 input * xkb_layout us-german-umlaut
 
 # Increase scrolling speed:
 input type:pointer scroll_factor 2.0
 
+# Disable the laptop output when the lid is closed
+# (and another monitor is attached...)
+set $laptop_output eDP-1
+bindswitch lid:on output $laptop_output disable
+bindswitch lid:off output $laptop_output enable
+
+######################################
+# APPLICATION SPECIFIC CONFIGURATION #
+######################################
+
 # List all windows here that should have default settings:
 for_window [app_id="gnome-calendar"] floating enable
+
+assign [class="firefox"]    workspace $workspace3
+assign [class="[Ss]potify"] workspace $workspace4
+assign [class="[Ss]ignal"]  workspace $workspace4
+
+
+exec spotify
+exec signal-desktop
+exec firefox
+
+# Start the automount daemon:
+# Requires `udisks2` and `udiskie` to be installed:
+exec udiskie --tray
+
+# Start the idle daemon (locks screen after certain inactivity):
+exec swayidle -w timeout 180 'swaylock -f' before-sleep 'swaylock -f'

@@ -1,36 +1,42 @@
-/*
- Solarized colors:
-
-    base03	 #002b36
-    base02	 #073642
-    base01	 #586e75
-    base00	 #657b83
-    base0	 #839496
-    base1	 #93a1a1
-    base2	 #eee8d5
-    base3	 #fdf6e3
-    yellow	 #b58900
-    orange	 #cb4b16
-    red      #dc322f
-    magenta  #d33682
-    violet	 #6c71c4
-    blue	 #268bd2
-    cyan	 #2aa198
-    green	 #859900
-*/
+/* NOTE: This is GTK CSS Syntax. See here for more documentation:
+ *
+ * https://docs.gtk.org/gtk4/css-properties.html
+ */
+@define-color solarized-base03	 #002b36;
+@define-color solarized-base02	 #073642;
+@define-color solarized-base01	 #586e75;
+@define-color solarized-base00	 #657b83;
+@define-color solarized-base0	 #839496;
+@define-color solarized-base1	 #93a1a1;
+@define-color solarized-base2	 #eee8d5;
+@define-color solarized-base3	 #fdf6e3;
+@define-color solarized-yellow	 #b58900;
+@define-color solarized-orange	 #cb4b16;
+@define-color solarized-red      #dc322f;
+@define-color solarized-magenta  #d33682;
+@define-color solarized-violet	 #6c71c4;
+@define-color solarized-blue	 #268bd2;
+@define-color solarized-cyan	 #2aa198;
+@define-color solarized-green	 #859900;
+@define-color custom-border      @solarized-base3;
 
 * {
 	font-size: 12px;
-	font-family: Ubuntu;
+	font-family: FiraCode;
+    padding: 3px 3px 3px 3px;
 }
 
 window.eDP-1 * {
-	font-size: 13px;
+	font-size: 14px;
 }
 
 window#waybar {
-	background: transparent;
-	color:  #073642;
+	background: @solarized-base2;
+	color:  @solarized-base02;
+
+    /* border to match the border on windows of sway */
+    border: solid @solarized-base01;
+    border-width: 0px 0px 1px 0px;
 }
 
 #custom-pacman,
@@ -57,13 +63,12 @@ window#waybar {
 #custom-pacman,
 #custom-aur,
 #custom-swap,
-#custom-spotify,
+#custom-playerctl,
 #temperature,
 #network,
 #custom-load,
 #tray {
 	padding: 0px 7px 0px 7px;
-	margin-top: 6px;
 	background: #eee8d5;
 	text-shadow: 1px 1px 2px rgba(147, 161, 161, 0.4);
 }
@@ -75,17 +80,53 @@ window#waybar {
 #temperature {
     /* Create strip effect on the right with lighter color */
 	background: #fdf6e3;
+	border-radius: 6px 6px 6px 6px;
 }
 
-#temperature,
-#tray {
-	margin-right: 10px;
-	border-radius: 0px 4px 4px 0px;
+#custom-load {
+    border: solid @custom-border;
+	border-radius: 4px;
+    border-width: 2px 0px 2px 2px;
+	padding-right: 5px;
+    background-color: alpha(@solarized-red, 0.5);
+}
+
+#custom-swap {
+    border: solid @custom-border;
+	border-radius: 4px;
+    border-width: 2px 0px 2px 2px;
+	padding-right: 5px;
+    background-color: alpha(@solarized-orange, 0.5);
+}
+
+#disk{
+    border: solid @custom-border;
+	border-radius: 4px;
+    border-width: 2px 0px 2px 2px;
+	padding-right: 5px;
+    background-color: alpha(@solarized-yellow, 0.5);
+}
+
+#backlight{
+    border: solid @custom-border;
+	border-radius: 4px;
+    border-width: 2px 0px 2px 2px;
+	padding-right: 5px;
+    background-color: alpha(@solarized-green, 0.5);
+}
+
+#temperature {
+    border: solid @custom-border;
+	border-radius: 4px;
+    border-width: 2px 0px 2px 2px;
+	padding-right: 5px;
+    background-color: alpha(@solarized-blue, 0.5);
 }
 
 #workspaces {
-	margin-left: 10px;
 	border-radius: 4px 0px 0px 4px;
+    border-color: black;
+    border-style: solid;
 }
 
 #mode {
@@ -101,28 +142,44 @@ window#waybar {
 	padding-left: 3px;
 }
 
-#cpu {
-	border-radius: 4px 0px 0px 4px;
+/* MIDDLE PART */
+
+#custom-weather {
+    border: solid @custom-border;
+	border-radius: 40px 0px 0px 40px;
+    border-width: 2px 0px 2px 2px;
+    background-color: alpha(@solarized-cyan, 0.5);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#custom-playerctl {
+    border: solid @custom-border;
+	border-radius: 0px 0px 0px 0px;
+    border-width: 2px 0px 2px 0px;
+    background-color: alpha(@solarized-blue, 0.5);
 }
 
 #clock {
-	border-radius: 4px 0px 0px 4px;
-	margin-right: 0px;
+    border: solid @custom-border;
+	border-radius: 0px 0px 0px 0px;
+    border-width: 2px 0px 2px 0px;
 	padding-right: 5px;
-    background-color: #eee8d5;
+	padding-left: 5px;
+    background-color: alpha(@solarized-violet, 0.5);
 }
 
 #custom-pacman {
+    border: solid @custom-border;
 	border-radius: 0px 4px 4px 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-    background: #fdf6e3;
+    border-width: 2px 2px 2px 0px;
+	padding-left: 5px;
+    background-color: alpha(@solarized-magenta, 0.5);
 }
 
 #custom-weather,
 #idle_inhibitor {
 	border-radius: 0px 4px 4px 0px;
-	margin-left: 0px;
 }
 
 /* WORKPLACE SETTINGS */
@@ -130,52 +187,41 @@ window#waybar {
 #workspaces {
 	padding: 0px;
 }
+
 #workspaces button {
-	padding: 0px 5px 0px 5px;
-	border-radius: 0px;
-}
-#workspaces button.focused {
-	background: #268bd2;
-}
-#workspaces button:hover {
-	border: #d33682;
-	background: #93a1a1;
-}
-#workspaces button.active:hover {
-	background: #2aa198;
-	border: #fdf6e3;
+    border: solid @custom-border;
+	border-radius: 4px 4px 4px;
+    border-width: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
-#workspaces button#sway-workspace-1 {
-	border-radius: 4px 0px 0px 4px;
+#workspaces button:hover {
+	background: alpha(@solarized-violet, 0.5);
+    border-color: @solarized-base03;
+    border-width: 2px;
+}
+
+#workspaces button.active:hover {
+    border-color: @solarized-base03;
+    border-width: 2px;
 }
 
 #workspaces button.visible {
-    /* Currently visible but not focused workplace */
-    background: #268bd2;
+    /* Currently visible but not focused workplace,
+     * typically on another output */
+    background: alpha(@solarized-blue, 0.5);
+    border-width: 2px;
 }
 
 #workspaces button.focused {
-    /* Currently focused workspace */
-    background: #859900;
+	background: alpha(@solarized-green, 0.5);
+    border-width: 2px;
 }
 
 #workspaces button.urgent {
-    /* Workplace with urgent apps */
-    background: #d33682;
-}
-
-#taskbar {
-	padding-left: 0px;
-	padding-right: 0px;
-}
-#taskbar button {
-	padding-top: 0px;
-	padding-bottom: 0px;
-	padding-left: 7px;
-	padding-right: 3px;
-	border-radius: 0px;
-}
-#taskbar button.active {
-	background: #859900;
+    /* workplace with urgent apps,
+     * takes precedence over focused */
+    background: alpha(@solarized-magenta, 0.5);
+    border-width: 2px;
 }

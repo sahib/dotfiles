@@ -1,0 +1,20 @@
+profile "Private laptop" {
+    output "Unknown 0x0561 0x00000000" mode 1920x1080 position 0,0
+}
+
+profile "Home Office" {
+    output "Unknown 0x0561 0x00000000"           mode 1920x1080 position 0,0
+    output "Hewlett Packard HP ZR24w CNT12211F4" mode 1920x1200 position 1920,0
+}
+
+profile "Private Working Room" {
+    output "Unknown 0x0561 0x00000000"                   disable
+    output "Samsung Electric Company U32R59x H4ZNC03013" mode 3840x2160 position 1920,0  scale 1.4
+}
+
+# TODO: Right working laptop ID.
+profile "Office Setup" {
+    output "Unknown 0x0561 0x00000000" mode 1920x1080 position 0,0
+    output DPI-2    mode 1920x1200 position 1920,0
+    output DPI-3    mode 3840x2160 position 1920,0  scale 1.5
+}
