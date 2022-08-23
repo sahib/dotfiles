@@ -33,3 +33,23 @@ yay -S \
     grimshot-git \
     mpvpaper \
 ```
+
+## Installed fonts:
+
+```bash
+```
+noto-fonts
+otf-fira-mono
+otf-font-awesome
+powerline-fonts
+ttf-caladea
+ttf-carlito
+ttf-dejavu
+ttf-droid
+ttf-font-awesome
+ttf-liberation
+ttf-linux-libertine
+ttf-nerd-fonts-symbols
+ttf-opensans
+ttf-ubuntu-font-family
+```
