@@ -1,0 +1,6 @@
+% Color settings
+
+color normal black lightdarkgrey
+color status green black
+color underline green black
+color overstrike red black

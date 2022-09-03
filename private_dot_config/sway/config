@@ -53,9 +53,6 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
-
 set $workspace1  "1"
 set $workspace2  "2"
 set $workspace3  "3"
@@ -227,14 +224,17 @@ assign [class="firefox"]    workspace $workspace3
 assign [class="[Ss]potify"] workspace $workspace4
 assign [class="[Ss]ignal"]  workspace $workspace4
 
-
+# Autostart programs I use anyways:
 exec spotify
 exec signal-desktop
 exec firefox
 
 # Start the automount daemon:
 # Requires `udisks2` and `udiskie` to be installed:
-exec udiskie --tray
+exec udiskie --tray --notify
 
 # Start the idle daemon (locks screen after certain inactivity):
 exec swayidle -w timeout 180 'swaylock -f' before-sleep 'swaylock -f'
+
+# Redshift the display in the evening:
+exec gammastep -m wayland -l 48.36:10.89
