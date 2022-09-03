@@ -25,6 +25,8 @@ Theming
 
 I'm one of the few odd people that use solarized light for most things. That's mostly because I tend to work in well-lit places and dark themes are hard on the eyes there. If you live in your cellar, then dark themes might be the way to go.
 
+![light theme](./screenshot.png)
+
 Editor
 ------
 
