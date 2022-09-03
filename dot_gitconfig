@@ -3,9 +3,6 @@
 	name = Chris Pahl
 	signingkey = 97C27D37B83E6A12BEF3D6D760464F5AAF3D5DAC
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-
 # Needed for the `gdk` alias for nice diffing:
 [diff]
     tool = kitty

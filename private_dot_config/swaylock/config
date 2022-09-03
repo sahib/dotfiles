@@ -1,4 +1,5 @@
-image=~/code/dotfiles/lock-tile.jpg
+# This uses the `swaylock-effects` fork of swaylock:
+image=~/lockscreen.jpg
 scaling=tile
 fade-in=1
 font="FiraCode"

@@ -189,7 +189,7 @@ exec mako
 
 # Uncomment this if you want to set a static wallpaper:
 # swaybg_command oguri-swaybg
-output "*" bg ~/code/dotfiles/wallpaper.jpg fill
+output "*" bg ~/wallpaper.jpg fill
 
 # Private laptop screen:
 output 'Unknown 0x0561 0x00000000'           mode 1920x1080 pos 0,0
