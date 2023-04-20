@@ -3,40 +3,20 @@
  * https://docs.gtk.org/gtk4/css-properties.html
  */
 
-/*
-@define-color solarized-base03	 #002b36;
-@define-color solarized-base02	 #073642;
-@define-color solarized-base01	 #586e75;
-@define-color solarized-base00	 #657b83;
-@define-color solarized-base0	 #839496;
-@define-color solarized-base1	 #93a1a1;
-@define-color solarized-base2	 #eee8d5;
-@define-color solarized-base3	 #fdf6e3;
-@define-color solarized-yellow	 #b58900;
-@define-color solarized-orange	 #cb4b16;
-@define-color solarized-red      #dc322f;
-@define-color solarized-magenta  #d33682;
-@define-color solarized-violet	 #6c71c4;
-@define-color solarized-blue	 #268bd2;
-@define-color solarized-cyan	 #2aa198;
-@define-color solarized-green	 #859900;
-@define-color custom-border      @solarized-base3;
-*/
-
-@define-color solarized-base02	 #24292e;
-@define-color solarized-base01	 #dbe9f9;
-@define-color solarized-base00	 #666666;
-@define-color solarized-base2	 #ffffff;
-@define-color solarized-base3	 #d1d5da;
-@define-color solarized-yellow   #dbab09;
-@define-color solarized-orange   #ffab02;
-@define-color solarized-red      #d73a49;
-@define-color solarized-magenta  #d91a79;
-@define-color solarized-violet   #5a32a3;
-@define-color solarized-blue     #0366d6;
-@define-color solarized-cyan     #0598bc;
-@define-color solarized-green    #38d745;
-@define-color custom-border      @solarized-base00;
+@define-color base02   #24292e;
+@define-color base01   #dbe9f9;
+@define-color base00   #666666;
+@define-color base2    #ffffff;
+@define-color base3    #d1d5da;
+@define-color yellow   #dbab09;
+@define-color orange   #ffab02;
+@define-color red      #d73a49;
+@define-color magenta  #d91a79;
+@define-color violet   #5a32a3;
+@define-color blue     #0366d6;
+@define-color cyan     #0598bc;
+@define-color green    #38d745;
+@define-color custom-border @base00;
 
 * {
 	font-size: 13px;
@@ -49,11 +29,11 @@ window.eDP-1 * {
 }
 
 window#waybar {
-	background: @solarized-base2;
-	color:  @solarized-base02;
+	background: @base2;
+	color:  @base02;
 
     /* border to match the border on windows of sway */
-    border: solid @solarized-base01;
+    border: solid @base01;
     border-width: 0px 0px 1px 0px;
 }
 
@@ -84,7 +64,7 @@ window#waybar {
 #custom-load,
 #tray {
 	padding: 0px 7px 0px 7px;
-	background: @solarized-base2;
+	background: @base2;
 	text-shadow: 1px 1px 2px rgba(147, 161, 161, 0.4);
 }
 
@@ -94,7 +74,7 @@ window#waybar {
 #backlight,
 #temperature {
     /* Create strip effect on the right with lighter color */
-	background: @solarized-base3;
+	background: @base3;
 	border-radius: 6px 6px 6px 6px;
 }
 
@@ -103,7 +83,8 @@ window#waybar {
 	border-radius: 2px;
     border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
-    background-color: alpha(@solarized-red, 0.5);
+    background-color: alpha(@red, 0.5);
+    margin-right: 3px;
 }
 
 #custom-swap {
@@ -111,7 +92,7 @@ window#waybar {
 	border-radius: 2px;
     border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
-    background-color: alpha(@solarized-orange, 0.5);
+    background-color: alpha(@orange, 0.5);
 }
 
 #disk{
@@ -119,7 +100,7 @@ window#waybar {
 	border-radius: 2px;
     border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
-    background-color: alpha(@solarized-yellow, 0.5);
+    background-color: alpha(@yellow, 0.5);
 }
 
 #backlight{
@@ -127,7 +108,7 @@ window#waybar {
 	border-radius: 2px;
     border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
-    background-color: alpha(@solarized-green, 0.5);
+    background-color: alpha(@green, 0.5);
 }
 
 #temperature {
@@ -135,19 +116,20 @@ window#waybar {
 	border-radius: 2px;
     border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
-    background-color: alpha(@solarized-blue, 0.5);
+    background-color: alpha(@blue, 0.5);
 }
 
 #workspaces {
 }
 
 #mode {
-	background: @solarized-magenta;
+	background: @magenta;
 }
 
 #disk.1,
 #memory {
 	padding-right: 3px;
+    margin-right: 3px;
 }
 #disk.2,
 #custom-swap {
@@ -160,14 +142,14 @@ window#waybar {
     border: solid @custom-border;
 	border-radius: 0px 0px 0px 0px;
     border-width: 1px 0px 1px 1px;
-    background-color: alpha(@solarized-cyan, 0.5);
+    background-color: alpha(@cyan, 0.5);
 }
 
 #custom-playerctl {
     border: solid @custom-border;
 	border-radius: 0px 0px 0px 0px;
     border-width: 1px 0px 1px 0px;
-    background-color: alpha(@solarized-blue, 0.5);
+    background-color: alpha(@blue, 0.5);
 }
 
 #clock {
@@ -177,7 +159,7 @@ window#waybar {
     padding-top: 5px;
 	padding-right: 5px;
 	padding-left: 5px;
-    background-color: alpha(@solarized-violet, 0.5);
+    background-color: alpha(@violet, 0.5);
 }
 
 #custom-pacman {
@@ -185,7 +167,7 @@ window#waybar {
 	border-radius: 0px 2px 2px 0px;
     border-width: 1px 1px 1px 0px;
 	padding-left: 5px;
-    background-color: alpha(@solarized-magenta, 0.5);
+    background-color: alpha(@magenta, 0.5);
 }
 
 #custom-weather,
@@ -210,26 +192,26 @@ window#waybar {
 }
 
 #workspaces button:hover {
-	background: alpha(@solarized-violet, 0.5);
-    border-color: @solarized-base03;
+	background: alpha(@violet, 0.5);
+    border-color: @base03;
 }
 
 #workspaces button.active:hover {
-    border-color: @solarized-base03;
+    border-color: @base03;
 }
 
 #workspaces button.visible {
     /* Currently visible but not focused workplace,
      * typically on another output */
-    background: alpha(@solarized-blue, 0.25);
+    background: alpha(@blue, 0.25);
 }
 
 #workspaces button.focused {
-	background: alpha(@solarized-green, 0.75);
+	background: alpha(@green, 0.75);
 }
 
 #workspaces button.urgent {
     /* workplace with urgent apps,
      * takes precedence over focused */
-    background: alpha(@solarized-magenta, 0.5);
+    background: alpha(@magenta, 0.5);
 }
