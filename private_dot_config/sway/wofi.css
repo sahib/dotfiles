@@ -1,44 +1,43 @@
 /* Solarized style of the wofi application picker */
 window {
-    margin: 5px;
-    border: 2px solid #586e75;
-    background-color: #eee8d5;
+    font: 'JetBrainsMono Nerd Font', 'JetBrains Mono', monospace;
+    border: 2px solid #666666;
+    border-radius: 15px;
+    background-color: #dbe9f9;
 }
 
 #input {
     margin: 5px;
-    color: #586e75;
+    color: #666666;
     border: 2px solid #657b83;
-    background-color: #fdf6e3;
+    border-radius: 5px;
+    background-color: #ffffff;
 }
 
 #inner-box {
     margin: 5px;
     border: 2px solid #586e75;
-    background-color: #fdf6e3;
+    border-radius: 5px;
+    background-color: #ffffff;
 }
 
 #outer-box {
-    margin: 5px;
-    border: 2px solid #eee8d5;
-    background-color: #eee8d5;
-}
-
-#scroll {
-    margin: 5px;
-    border: 2px solid #eee8d5;
-    background-color: #eee8d5;
+    margin: 15px;
+    border: 2px solid #dbe9f9;
+    border-radius: 15px;
+    background-color: #dbe9f9;
 }
 
 #text {
     margin: 5px;
-    color: #657b83;
+    color: #24292e;
 }
 
 #entry:selected {
-    background-color: #859900;
+    background-color: #58f785;
 }
 
 #text:selected {
-    color: #586e75;
+    color: #24292e;
+    border-radius: 15px;
 }

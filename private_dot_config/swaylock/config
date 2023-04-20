@@ -3,7 +3,7 @@ image=~/lockscreen.jpg
 scaling=tile
 fade-in=1
 font="FiraCode"
-font-size=100
+font-size=80
 indicator-idle-visible
 indicator-radius=200
 show-failed-attempts

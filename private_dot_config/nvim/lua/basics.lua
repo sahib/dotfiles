@@ -102,5 +102,5 @@ vim.o.clipboard = "unnamedplus"
 
 vim.o.termguicolors = true
 
-vim.diagnostic.config({virtual_text = false})
-vim.diagnostic.disable()
+vim.diagnostic.config({virtual_text = true})
+-- vim.diagnostic.disable()

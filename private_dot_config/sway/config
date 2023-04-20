@@ -2,7 +2,8 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FiraCode 11, Awesome 12
+# font pango:FiraCode 11, Awesome 12
+font pango:JetBrainsMono Nerd Font 13
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -120,42 +121,33 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Show a bit of wallpaper:
-# gaps outer 0
-# gaps inner 0
-# smart_gaps on
+# GitHub based colorscheme:
+set $base02	 #24292e
+set $base01	 #dbe9f9
+set $base00	 #666666
+set $base2	 #ffffff
+set $base3	 #d1d5da
 
-# For solarized light colors see:
-# http://www.zovirl.com/2011/07/22/solarized_cheat_sheet/
-# NOTE: The colors are mixed to 50% with base2 to soften the intensity.
-set $base03	 #002b36
-set $base02	 #073642
-set $base01	 #586e75
-set $base00	 #657b83
-set $base0	 #839496
-set $base1	 #93a1a1
-set $base2	 #eee8d5
-set $base3	 #fdf6e3
-set $yellow	 #D1B86A
-set $orange	 #DC9975
-set $red     #E58D81
-set $magenta #E08FAB
-set $violet	 #ADACCC
-set $blue	 #8AB9D3
-set $cyan	 #8CC4B6
-set $green	 #B9C06A
+set $yellow  #dbab09
+set $orange  #ffab02
+set $red     #d73a49
+set $magenta #f95a99
+set $violet  #5a32a3
+set $blue    #0366d6
+set $cyan    #0598bc
+set $green   #58f785
 
 
-default_border pixel 3
+default_border pixel 1
 default_floating_border normal
-titlebar_border_thickness 0
+titlebar_border_thickness 1
 
 # class                 border  backgr.  text    indicator child_border
-client.focused          $base01 $green   $base02 $green    $base00
-client.focused_inactive $base01 $base2   $base00 $base2    $base00
-client.unfocused        $base01 $base2   $base00 $base2    $base00
-client.urgent           $base01 $magenta $base02 $magenta  $base00
-client.background       $base3
+client.focused          $base00  $green   $base02 $green    $base00
+client.focused_inactive $base00  $base2   $base00 $base2    $base00
+client.unfocused        $base00  $base2   $base00 $base2    $base00
+client.urgent           $base00  $magenta $base02 $magenta  $base00
+client.background       $base00
 
 bar {
     swaybar_command waybar
@@ -238,3 +230,6 @@ exec swayidle -w timeout 180 'swaylock -f' before-sleep 'swaylock -f'
 
 # Redshift the display in the evening:
 exec gammastep -m wayland -l 48.36:10.89
+
+# NetworkManager tray icon:
+exec nm-applet --indicator

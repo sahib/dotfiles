@@ -5,6 +5,7 @@
 	"modules-left": [
 		"sway/workspaces",
 		"sway/mode",
+        "idle_inhibitor",
 	],
 	"modules-center": [
         "custom/weather",
@@ -165,4 +166,11 @@
         "exec": "~/.config/waybar/modules/waybar-wttr.py",
         "return-type": "json"
     },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    }
 }

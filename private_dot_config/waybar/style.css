@@ -2,6 +2,8 @@
  *
  * https://docs.gtk.org/gtk4/css-properties.html
  */
+
+/*
 @define-color solarized-base03	 #002b36;
 @define-color solarized-base02	 #073642;
 @define-color solarized-base01	 #586e75;
@@ -19,10 +21,26 @@
 @define-color solarized-cyan	 #2aa198;
 @define-color solarized-green	 #859900;
 @define-color custom-border      @solarized-base3;
+*/
+
+@define-color solarized-base02	 #24292e;
+@define-color solarized-base01	 #dbe9f9;
+@define-color solarized-base00	 #666666;
+@define-color solarized-base2	 #ffffff;
+@define-color solarized-base3	 #d1d5da;
+@define-color solarized-yellow   #dbab09;
+@define-color solarized-orange   #ffab02;
+@define-color solarized-red      #d73a49;
+@define-color solarized-magenta  #d91a79;
+@define-color solarized-violet   #5a32a3;
+@define-color solarized-blue     #0366d6;
+@define-color solarized-cyan     #0598bc;
+@define-color solarized-green    #38d745;
+@define-color custom-border      @solarized-base00;
 
 * {
-	font-size: 12px;
-	font-family: FiraCode;
+	font-size: 13px;
+    font-family: JetBrainsMono Nerd Font;
     padding: 3px 3px 3px 3px;
 }
 
@@ -39,12 +57,9 @@ window#waybar {
     border-width: 0px 0px 1px 0px;
 }
 
-#custom-pacman,
-#disk,
-#pulseaudio,
-#memory,
 #cpu {
-	font-family: "Symbols Nerd Font";
+    /* no idea why that margin is needed */
+    margin-top: 5px;
 }
 
 #workspaces,
@@ -69,7 +84,7 @@ window#waybar {
 #custom-load,
 #tray {
 	padding: 0px 7px 0px 7px;
-	background: #eee8d5;
+	background: @solarized-base2;
 	text-shadow: 1px 1px 2px rgba(147, 161, 161, 0.4);
 }
 
@@ -79,58 +94,55 @@ window#waybar {
 #backlight,
 #temperature {
     /* Create strip effect on the right with lighter color */
-	background: #fdf6e3;
+	background: @solarized-base3;
 	border-radius: 6px 6px 6px 6px;
 }
 
 #custom-load {
     border: solid @custom-border;
-	border-radius: 4px;
-    border-width: 2px 0px 2px 2px;
+	border-radius: 2px;
+    border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
     background-color: alpha(@solarized-red, 0.5);
 }
 
 #custom-swap {
     border: solid @custom-border;
-	border-radius: 4px;
-    border-width: 2px 0px 2px 2px;
+	border-radius: 2px;
+    border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
     background-color: alpha(@solarized-orange, 0.5);
 }
 
 #disk{
     border: solid @custom-border;
-	border-radius: 4px;
-    border-width: 2px 0px 2px 2px;
+	border-radius: 2px;
+    border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
     background-color: alpha(@solarized-yellow, 0.5);
 }
 
 #backlight{
     border: solid @custom-border;
-	border-radius: 4px;
-    border-width: 2px 0px 2px 2px;
+	border-radius: 2px;
+    border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
     background-color: alpha(@solarized-green, 0.5);
 }
 
 #temperature {
     border: solid @custom-border;
-	border-radius: 4px;
-    border-width: 2px 0px 2px 2px;
+	border-radius: 2px;
+    border-width: 1px 1px 1px 1px;
 	padding-right: 5px;
     background-color: alpha(@solarized-blue, 0.5);
 }
 
 #workspaces {
-	border-radius: 4px 0px 0px 4px;
-    border-color: black;
-    border-style: solid;
 }
 
 #mode {
-	background: #d33682;
+	background: @solarized-magenta;
 }
 
 #disk.1,
@@ -146,24 +158,23 @@ window#waybar {
 
 #custom-weather {
     border: solid @custom-border;
-	border-radius: 40px 0px 0px 40px;
-    border-width: 2px 0px 2px 2px;
+	border-radius: 0px 0px 0px 0px;
+    border-width: 1px 0px 1px 1px;
     background-color: alpha(@solarized-cyan, 0.5);
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 #custom-playerctl {
     border: solid @custom-border;
 	border-radius: 0px 0px 0px 0px;
-    border-width: 2px 0px 2px 0px;
+    border-width: 1px 0px 1px 0px;
     background-color: alpha(@solarized-blue, 0.5);
 }
 
 #clock {
     border: solid @custom-border;
 	border-radius: 0px 0px 0px 0px;
-    border-width: 2px 0px 2px 0px;
+    border-width: 1px 0px 1px 0px;
+    padding-top: 5px;
 	padding-right: 5px;
 	padding-left: 5px;
     background-color: alpha(@solarized-violet, 0.5);
@@ -171,57 +182,54 @@ window#waybar {
 
 #custom-pacman {
     border: solid @custom-border;
-	border-radius: 0px 4px 4px 0px;
-    border-width: 2px 2px 2px 0px;
+	border-radius: 0px 2px 2px 0px;
+    border-width: 1px 1px 1px 0px;
 	padding-left: 5px;
     background-color: alpha(@solarized-magenta, 0.5);
 }
 
 #custom-weather,
 #idle_inhibitor {
-	border-radius: 0px 4px 4px 0px;
+	border-radius: 0px 2px 2px 0px;
 }
 
 /* WORKPLACE SETTINGS */
 
 #workspaces {
-	padding: 0px;
+	padding: 2px;
 }
 
 #workspaces button {
     border: solid @custom-border;
-	border-radius: 4px 4px 4px;
-    border-width: 0px;
+	border-radius: 2px 2px 2px 2px;
+    border-width: 1px 1px 1px 1px;
 	padding-left: 5px;
-	padding-right: 5px;
+	padding-right: 7px;
+    margin-left: 2px;
+    margin-right: 2px
 }
 
 #workspaces button:hover {
 	background: alpha(@solarized-violet, 0.5);
     border-color: @solarized-base03;
-    border-width: 2px;
 }
 
 #workspaces button.active:hover {
     border-color: @solarized-base03;
-    border-width: 2px;
 }
 
 #workspaces button.visible {
     /* Currently visible but not focused workplace,
      * typically on another output */
-    background: alpha(@solarized-blue, 0.5);
-    border-width: 2px;
+    background: alpha(@solarized-blue, 0.25);
 }
 
 #workspaces button.focused {
-	background: alpha(@solarized-green, 0.5);
-    border-width: 2px;
+	background: alpha(@solarized-green, 0.75);
 }
 
 #workspaces button.urgent {
     /* workplace with urgent apps,
      * takes precedence over focused */
     background: alpha(@solarized-magenta, 0.5);
-    border-width: 2px;
 }

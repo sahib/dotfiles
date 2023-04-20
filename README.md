@@ -23,7 +23,7 @@ $ chezmoi diff
 Theming
 -------
 
-I'm one of the few odd people that use solarized light for most things. That's mostly because I tend to work in well-lit places and dark themes are hard on the eyes there. If you live in your cellar, then dark themes might be the way to go.
+I'm one of the few odd people that use light colorschemes for most things. That's mostly because I tend to work in well-lit places and dark themes are hard on the eyes there. If you live in your cellar, then dark themes might be the way to go.
 
 ![light theme](./screenshot.png)
 
@@ -31,3 +31,24 @@ Editor
 ------
 
 The most advanced thing is probably my Neovim config. Not really surprising since I spent my work day in this application. It uses packer and lua based configuration, which was copied from all over the internet although a good chunks comes from [here](optimizacija/neovim-config) (Thanks!).
+
+Packages
+--------
+
+* **kitty**: Terminal.
+* **zsh:** Shell.
+* **neovim**: Editor.
+* **sway**: Wayland compositor.
+* **waybar**: Statusbar on top.
+* **wofi**: Launcher application.
+* **zoxide**: Directory autojumpger.
+* **nm-applet**: Networkmanager interface.
+* **udiskie2**: Automounter.
+* **most**: Pager.
+* **zathura**: PDF viewer (muPDF backend)
+
+Fonts:
+
+* JetBrainsMono: Monospace font (with nerd symbols)
+* OpenMoji-Color: Emoji Font.
+* Vollkorn: Documents.

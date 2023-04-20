@@ -17,7 +17,7 @@ export DISABLE_AUTO_TITLE="false"
 plugins=(git golang timer sudo ssh-agent gpg-agent zsh-syntax-highlighting cp aws colored-man-pages python last-working-dir)
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="false"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -76,3 +76,5 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat -
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
+
+eval "$(zoxide init zsh)"
