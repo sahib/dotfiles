@@ -46,6 +46,7 @@ Packages
 * **udiskie2**: Automounter.
 * **most**: Pager.
 * **zathura**: PDF viewer (muPDF backend)
+* **exa**: Better ls
 
 Fonts:
 
