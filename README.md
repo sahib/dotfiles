@@ -47,6 +47,13 @@ Packages
 * **most**: Pager.
 * **zathura**: PDF viewer (muPDF backend)
 * **exa**: Better ls
+* **mako**: Notification manager.
+* **swayidle:** Idle manager.
+* **swaylock:** Lock screen.
+* **swaybg:** Simple background setter (or see wallday/)
+* **gammastep:** Adjust to daylight.
+* **sxiv:** Image viewer.
+* **grimshot/slurp:** Screenshot taking.
 
 Fonts:
 
