@@ -233,3 +233,24 @@ exec gammastep -m wayland -l 48.36:10.89
 
 # NetworkManager tray icon:
 exec nm-applet --indicator
+
+
+# OSD window
+exec swayosd
+
+# Sink volume raise
+bindsym XF86AudioRaiseVolume exec swayosd --output-volume raise
+# Sink volume lower
+bindsym XF86AudioLowerVolume exec  swayosd --output-volume lower
+# Sink volume toggle mute
+bindsym XF86AudioMute exec swayosd --output-volume mute-toggle
+# Source volume toggle mute
+bindsym XF86AudioMicMute exec swayosd --input-volume mute-toggle
+
+# Capslock
+bindsym --release Caps_Lock exec swayosd --caps-lock
+
+# Brightness raise
+bindsym XF86MonBrightnessUp exec swayosd --brightness raise
+# Brightness lower
+bindsym XF86MonBrightnessDown exec swayosd --brightness lower
