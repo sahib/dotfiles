@@ -231,9 +231,11 @@ exec swayidle -w timeout 180 'swaylock -f' before-sleep 'swaylock -f'
 # Redshift the display in the evening:
 exec gammastep -m wayland -l 48.36:10.89
 
+# Screen profile saver:
+exec shikane
+
 # NetworkManager tray icon:
 exec nm-applet --indicator
-
 
 # OSD window
 exec swayosd

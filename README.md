@@ -55,6 +55,7 @@ Packages
 * **gammastep:** Adjust to daylight.
 * **sxiv:** Image viewer.
 * **grimshot/slurp:** Screenshot taking.
+* **shikane:** Apply monitor profiles.
 
 Fonts:
 

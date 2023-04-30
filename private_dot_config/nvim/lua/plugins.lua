@@ -308,3 +308,10 @@ vim.keymap.set('n', '<leader>a', '<cmd>SymbolsOutline<CR>')
 require("symbols-outline").setup({
     preview_bg_highlight = "#000000"
 })
+
+
+-- I often type :W or :Q (because I'm stupid) for saving:
+for _, v in ipairs({"W", "Q", "Wq", "WQ"}) do
+    vim.api.nvim_create_user_command(v, v:lower(), {})
+end
+
