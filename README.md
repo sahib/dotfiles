@@ -51,9 +51,11 @@ Packages
 * **swayidle:** Idle manager.
 * **swaylock:** Lock screen.
 * **swaybg:** Simple background setter (or see wallday/)
+* **swayosd:** OSD for volume, brightness, capslock.
 * **gammastep:** Adjust to daylight.
 * **sxiv:** Image viewer.
 * **grimshot/slurp:** Screenshot taking.
+* **shikane:** Apply monitor profiles.
 
 Fonts:
 

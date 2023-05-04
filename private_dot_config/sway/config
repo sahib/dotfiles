@@ -231,6 +231,9 @@ exec swayidle -w timeout 180 'swaylock -f' before-sleep 'swaylock -f'
 # Redshift the display in the evening:
 exec gammastep -m wayland -l 48.36:10.89
 
+# Screen profile saver:
+exec shikane
+
 # NetworkManager tray icon:
 exec nm-applet --indicator
 
@@ -238,3 +241,23 @@ exec nm-applet --indicator
 exec_always {
     gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Light-Maia'
 }
+
+# OSD window
+exec swayosd
+
+# Sink volume raise
+bindsym XF86AudioRaiseVolume exec swayosd --output-volume raise
+# Sink volume lower
+bindsym XF86AudioLowerVolume exec  swayosd --output-volume lower
+# Sink volume toggle mute
+bindsym XF86AudioMute exec swayosd --output-volume mute-toggle
+# Source volume toggle mute
+bindsym XF86AudioMicMute exec swayosd --input-volume mute-toggle
+
+# Capslock
+bindsym --release Caps_Lock exec swayosd --caps-lock
+
+# Brightness raise
+bindsym XF86MonBrightnessUp exec swayosd --brightness raise
+# Brightness lower
+bindsym XF86MonBrightnessDown exec swayosd --brightness lower
