@@ -158,7 +158,10 @@ bar {
 bindsym $mod+F1 exec swaylock -f
 bindsym $mod+F2 exec swaylock -f && systemctl suspend
 
-bindsym $mod+F5 exec mpv --fullscreen --length=2 ~/badumts.mp4
+bindsym $mod+F3 exec mpv --fullscreen ~/clips/but_why.webm
+bindsym $mod+F4 exec mpv --fullscreen ~/clips/aufs_klo.webm
+bindsym $mod+F5 exec mpv --fullscreen --length=2 ~/clips/badumts.mp4
+bindsym $mod+F6 exec mpv --fullscreen ~/clips/krasses_pferd.webm
 
 bindsym $mod+F7   exec playerctl -p playerctld previous
 bindsym $mod+F8   exec playerctl -p playerctld play-pause

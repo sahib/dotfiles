@@ -270,6 +270,17 @@ require("auto-save").setup()
 
 -- disable normal command prompt and use wilder:
 vim.o.cmdheight = 0
+vim.opt.shortmess :append("c")
+vim.opt.shortmess :append("n")
+vim.opt.shortmess :append("o")
+vim.opt.shortmess :append("I")
+
+
+-- Fix for needing to press Enter when something was not found in the search.
+-- This seems to be a bug due to setting cmdheight=0: https://github.com/neovim/neovim/issues/20380
+vim.api.nvim_command("au CmdlineEnter * setlocal cmdheight=1")
+vim.api.nvim_command("au CmdlineLeave * call timer_start(1, { tid -> execute('setlocal cmdheight=0')})")
+
 wilder = require("wilder")
 local gradient = {
   '#f4468f', '#fd4a85', '#ff507a', '#ff566f', '#ff5e63',
@@ -314,4 +325,3 @@ require("symbols-outline").setup({
 for _, v in ipairs({"W", "Q", "Wq", "WQ"}) do
     vim.api.nvim_create_user_command(v, v:lower(), {})
 end
-
