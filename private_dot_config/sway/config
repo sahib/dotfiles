@@ -183,7 +183,6 @@ exec_always dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRES
 exec mako
 
 # Uncomment this if you want to set a static wallpaper:
-# swaybg_command oguri-swaybg
 output "*" bg ~/wallpaper.jpg fill
 
 # Private laptop screen:
@@ -195,6 +194,7 @@ output 'Hewlett Packard HP ZR24w CNT12211F4' mode 1920x1200 pos 1920,0
 # Work:
 output DPI-2    mode 1920x1200 pos 1920,0
 output DPI-3    mode 3840x2160 pos 1920,0  scale 1.5
+output DPI-5    mode 3840x2160 pos 1920,0  scale 1.5
 output HDMI-A-2 mode 3840x2160 pos 1920,0  scale 1.5
 
 input * xkb_layout us-german-umlaut
@@ -239,6 +239,11 @@ exec shikane
 
 # NetworkManager tray icon:
 exec nm-applet --indicator
+
+# Set gtk theme / icon theme etc. here.
+exec_always {
+    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Light-Maia'
+}
 
 # OSD window
 exec swayosd
