@@ -1,190 +1,180 @@
 local fn = vim.fn
 local installPath = DATA_PATH..'/site/pack/packer/start/packer.nvim'
 
--- install packer if it's not installed already
-local packerBootstrap = nil
-if fn.empty(fn.glob(installPath)) > 0 then
-  packerBootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', installPath})
-  vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-require('packer').startup(function(use)
-  -- Packer should manage itself
-  use 'wbthomason/packer.nvim'
 
+require('lazy').setup({
   -- smooth scrolling on page up/down:
-  use 'psliwka/vim-smoothie'
+  'psliwka/vim-smoothie',
 
   -- git integration
-  use {
+  {
     'lewis6991/gitsigns.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim'
     }
-  }
+  },
 
   -- surround vim
-  use 'tpope/vim-surround'
+  'tpope/vim-surround',
 
   -- status line
-  use {
+  {
      'nvim-lualine/lualine.nvim',
-     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
+     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
+  },
 
   -- show recent files on empty nvim command
-  use 'mhinz/vim-startify'
+  'mhinz/vim-startify',
 
   -- lsp config
-  use 'neovim/nvim-lspconfig'
+  'neovim/nvim-lspconfig',
 
   -- for LSP autocompletion
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
 
   -- For vsnip users.
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
-
-  use 'nvim-tree/nvim-web-devicons'
+  'hrsh7th/cmp-vsnip',
+  'hrsh7th/vim-vsnip',
+  'nvim-tree/nvim-web-devicons',
 
   -- TODO: prettify telescope vim, make it use regex & shorten the window
   -- telescope - searching / navigation
-  use {
+  {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+    dependencies = { {'nvim-lua/plenary.nvim'} }
+  },
 
   -- better highlighting
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
 
   -- Split/Join support (gS / gJ)
-  use 'AndrewRadev/splitjoin.vim'
+  'AndrewRadev/splitjoin.vim',
 
   -- d2 lang highlighting
-  use 'terrastruct/d2-vim'
+  'terrastruct/d2-vim',
 
   -- Use <leader>gh to open current file as github link:
-  use 'ruanyl/vim-gh-line'
+  'ruanyl/vim-gh-line',
 
-  use {
+  {
     'nvim-tree/nvim-tree.lua',
-    requires = 'nvim-tree/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function() require'nvim-tree'.setup {} end
-  }
+  },
 
   -- Some Go niceties
   -- https://github.com/ray-x/go.nvim
-  use 'ray-x/go.nvim'
-  use 'ray-x/guihua.lua' -- recommended if need floating window support
+  'ray-x/go.nvim',
+  'ray-x/guihua.lua', -- recommended if need floating window support
 
   -- nice diagnostic pane on the bottom
-  use 'folke/lsp-trouble.nvim'
+  'folke/lsp-trouble.nvim',
 
   -- better LSP UI (for code actions, rename etc.)
-  use 'glepnir/lspsaga.nvim'
+  'glepnir/lspsaga.nvim',
 
   -- show indentation levels
-  use 'lukas-reineke/indent-blankline.nvim'
+  'lukas-reineke/indent-blankline.nvim',
 
   -- Make formatting tabular data easy.
-  use 'godlygeek/tabular'
+  'godlygeek/tabular',
 
   -- Show hex colors in the respective background color:
-  use 'norcalli/nvim-colorizer.lua'
-  use 'Glench/Vim-Jinja2-Syntax'
+  'norcalli/nvim-colorizer.lua',
+  'Glench/Vim-Jinja2-Syntax',
 
-  use {
+  {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-  }
+    dependencies = "nvim-lua/plenary.nvim",
+  },
 
   -- The ":Git" family of commands.
-  use 'tpope/vim-fugitive'
+  'tpope/vim-fugitive',
 
   -- Spellchecking:
-  use 'lewis6991/spellsitter.nvim'
+  'lewis6991/spellsitter.nvim',
 
   -- Highlight whitespace errors (and use :FixWhitespace):
-  use 'bronson/vim-trailing-whitespace'
+  'bronson/vim-trailing-whitespace',
 
   -- Show lightbulb when code action is available on a line:
-  use {
+  {
     'kosayoda/nvim-lightbulb',
-    requires = 'antoinemadec/FixCursorHold.nvim',
-  }
+    dependencies = 'antoinemadec/FixCursorHold.nvim',
+  },
 
   -- Make it easy to install new language servers with :Mason
-  use { "williamboman/mason.nvim" }
-  use { "williamboman/mason-lspconfig.nvim" }
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
 
   -- mkdir folders on save if they do not exist
-  use { 'jghauser/mkdir.nvim' }
+  { 'jghauser/mkdir.nvim' },
 
   -- run tests directly from the editor (using gt and gT)
-  use {
+  {
     "nvim-neotest/neotest",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/neotest-go"
     }
-  }
+  },
 
   -- Show a nice tabline that takes the colors of lualine:
-  use {
+  {
     'kdheepak/tabline.nvim',
-    requires = {
+    dependencies = {
         { 'nvim-lualine/lualine.nvim', opt=true },
         { 'nvim-tree/nvim-web-devicons', opt = true},
     }
-  }
+  },
 
   -- Colorscheme:
-  use({
+  {
     'projekt0n/github-nvim-theme', tag = 'v0.0.7'
-  })
+  },
 
   -- Add twin-bracket when typing [{(
-  use{ "windwp/nvim-autopairs" }
+  "windwp/nvim-autopairs",
 
   -- remember the last edit position in a file:
-  use { 'ethanholz/nvim-lastplace' }
+  'ethanholz/nvim-lastplace',
 
   -- rainbow colors for nested brackets (((())))
-  use { 'mrjones2014/nvim-ts-rainbow' }
+  'mrjones2014/nvim-ts-rainbow',
 
   -- use ,rn to rename things with lsp
-  use {
+  {
     'filipdutescu/renamer.nvim',
     branch = 'master',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+    dependencies = { {'nvim-lua/plenary.nvim'} }
+  },
 
   -- autosave on some events:
-  use {
-    "https://git.sr.ht/~nedia/auto-save.nvim",
-  }
-
-  use 'simrat39/symbols-outline.nvim'
-
-  use {
+  "https://git.sr.ht/~nedia/auto-save.nvim",
+  'simrat39/symbols-outline.nvim',
   'gelguy/wilder.nvim',
-  config = function()
-    -- config goes here
-  end,
-}
+  'jake-stewart/slide.nvim'
 
-  -- this will automatically install listed dependencies
-  -- only the first time NeoVim is opened, because that's when Packer gets installed
-  if packerBootstrap then
-    require('packer').sync()
-  end
-end)
+})
 
 -- plugin specific configs go here
 require('plugin-config/nvim-cmp')
@@ -325,3 +315,9 @@ require("symbols-outline").setup({
 for _, v in ipairs({"W", "Q", "Wq", "WQ"}) do
     vim.api.nvim_create_user_command(v, v:lower(), {})
 end
+
+
+-- Press ",k" or ",j" to go down or up a column of same-colored things.
+local slide = require("slide")
+vim.keymap.set({"n", "v"}, "<leader>k", slide.up)
+vim.keymap.set({"n", "v"}, "<leader>j", slide.down)
