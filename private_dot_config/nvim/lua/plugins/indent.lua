@@ -20,13 +20,13 @@ return {
         -- This lets the indent lines be more visible the more nested
         -- a piece of code is. The first Grey is the leftmost one.
         hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-            vim.api.nvim_set_hl(0, "Grey1", { fg = "#EEEEEE" })
-            vim.api.nvim_set_hl(0, "Grey2", { fg = "#DDDDDD" })
-            vim.api.nvim_set_hl(0, "Grey3", { fg = "#CCCCCC" })
-            vim.api.nvim_set_hl(0, "Grey4", { fg = "#BBBBBB" })
-            vim.api.nvim_set_hl(0, "Grey5", { fg = "#AAAAAA" })
-            vim.api.nvim_set_hl(0, "Grey6", { fg = "#999999" })
-            vim.api.nvim_set_hl(0, "Grey7", { fg = "#888888" })
+            vim.api.nvim_set_hl(0, "Grey1", { fg = "#DDDDDD" })
+            vim.api.nvim_set_hl(0, "Grey2", { fg = "#CCCCCC" })
+            vim.api.nvim_set_hl(0, "Grey3", { fg = "#BBBBBB" })
+            vim.api.nvim_set_hl(0, "Grey4", { fg = "#AAAAAA" })
+            vim.api.nvim_set_hl(0, "Grey5", { fg = "#999999" })
+            vim.api.nvim_set_hl(0, "Grey6", { fg = "#888888" })
+            vim.api.nvim_set_hl(0, "Grey7", { fg = "#777777" })
         end)
 
 

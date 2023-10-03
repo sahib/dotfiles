@@ -4,20 +4,12 @@ vim.g.mapleader = ','
 
 -- ================= File management ================= --
 
--- swapfile has global & local config, eventhough help says otherwise
+-- swapfile has global & local config, even though help says otherwise
 vim.o.swapfile = false -- can open already open files
 vim.bo.swapfile = false
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.autoread = true -- auto file change detection
--- autocmds are currently not supported by nvim (0.5 nighlty)
-vim.api.nvim_command([[
-" Triger `autoread` when files changes on disk
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-" Notification after file change
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-]])
 
 -- https://github.com/lucasvianav/nvim/blob/62ac5c2aa8abb25094d7d896c3b58a0936c13984/lua/functions/utilities.lua#L39-L48
 function trim_trailing_whitespaces()
@@ -72,7 +64,6 @@ vim.o.incsearch = true  -- start searching on each keystroke
 vim.o.smartcase = true  -- ignore case when lowercase, match case when capital case is used
 vim.o.hlsearch = true   -- highlight the search results
 
-
 -- ================= Performance ================= --
 
 vim.o.ttimeoutlen = 10 -- ms to wait for a key code seq to complete
@@ -83,7 +74,7 @@ vim.o.ttimeoutlen = 10 -- ms to wait for a key code seq to complete
 vim.wo.wrap = false    -- don't wrap long text into multiple lines
 vim.o.history = 10000  -- numbers of entries in history for ':' commands and search patterns (10000 = max)
 vim.o.updatetime = 300 -- used for CursorHold event (for document highlighting detection)
-vim.o.mouse = 'nv'     -- allow mose in normal & visual mode
+vim.o.mouse = 'nv'     -- allow mouse in normal & visual mode
 
 -- better autocomplete behaviour
 -- menuone - show popup menu also when there is only one match available
@@ -105,8 +96,12 @@ vim.diagnostic.config({ virtual_text = true })
 
 -- Enable spell check:
 vim.opt.spell = true
--- TODO: add german.
-vim.opt.spelllang = { 'en_us' }
+
+-- For arch the packages are vim-spell-de (or other suffix)
+vim.opt.spelllang = {
+    'en_us',
+    'de_de',
+}
 
 
 vim.opt.list = true

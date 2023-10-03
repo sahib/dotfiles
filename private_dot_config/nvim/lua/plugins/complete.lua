@@ -9,6 +9,11 @@ local config = function()
     local luasnip = require('luasnip')
     local lspkind = require('lspkind')
     cmp.setup({
+        -- Integrate snippets as completion source.
+        require('cmp_luasnip_choice').setup({
+            auto_open = true,
+        });
+
         formatting = {
             format = lspkind.cmp_format({
                 mode = 'symbol',
@@ -64,7 +69,7 @@ local config = function()
 
     cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources({
-            { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+            { name = 'cmp_git' },
         }, {
             { name = 'buffer' },
         })
@@ -74,7 +79,8 @@ local config = function()
     cmp.setup.cmdline('/', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
-            { name = 'buffer' }
+            { name = 'buffer' },
+            { name = "nvim_lsp" },
         }
     })
 
@@ -90,6 +96,7 @@ local config = function()
 end
 
 return {
+    -- Provide nice snippets for auto completion (like func, im, ir, ...)
     {
         'L3MON4D3/LuaSnip',
         build = "make install_jsregexp",
@@ -101,6 +108,8 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
         end
     },
+    -- Completion engine with nice UI and many configurable sources.
+    -- NOTE: C-x C-o still works in case nvim-cmp is configured badly..
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
@@ -115,15 +124,9 @@ return {
             'nvim-tree/nvim-web-devicons',
             'doxnit/cmp-luasnip-choice',
             'hrsh7th/cmp-calc',
+            "onsails/lspkind.nvim",
+            'doxnit/cmp-luasnip-choice',
         },
         config = config,
-    },
-    {
-        'doxnit/cmp-luasnip-choice',
-        config = function()
-            require('cmp_luasnip_choice').setup({
-                auto_open = true, -- Automatically open nvim-cmp on choice node (default: true)
-            });
-        end,
     },
 }
