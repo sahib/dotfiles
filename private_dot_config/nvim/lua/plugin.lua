@@ -17,4 +17,7 @@ require('lazy').setup("plugins", {
         -- reload doesn't really work for me. Disable it.
         enabled = false,
     },
+    ui = {
+        border = 'single',
+    }
 })
