@@ -1,7 +1,15 @@
 return {
     -- Provide the :Mason command to easily install missing language servers:
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
+    {
+        "williamboman/mason.nvim",
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim"
+        },
+        config = function ()
+            require("mason").setup()
+        end
+    },
+    -- Auto-format files using their LSP functonality
     {
         "lukas-reineke/lsp-format.nvim",
         opts = {

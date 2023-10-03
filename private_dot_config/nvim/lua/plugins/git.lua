@@ -12,7 +12,6 @@ return {
         end
     },
     {
-        -- TOOD: Watch the screencasts in the readme.
         -- The ":Git" family of commands.
         'tpope/vim-fugitive',
     },

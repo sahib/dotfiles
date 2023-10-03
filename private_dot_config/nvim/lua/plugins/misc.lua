@@ -46,8 +46,8 @@ return {
     -- right of it.
     {
         'jbyuki/quickmath.nvim',
-        config = function ()
-            vim.api.nvim_set_keymap('', '<leader>m',  '<Cmd>tabnew | :Quickmath<CR>', {
+        config = function()
+            vim.api.nvim_set_keymap('', '<leader>m', '<Cmd>tabnew | :Quickmath<CR>', {
                 desc = "Do quick math",
             })
         end
@@ -135,16 +135,22 @@ return {
     },
     -- Show a help for the key if not pressed fast enough:
     {
-      "folke/which-key.nvim",
-      event = "VeryLazy",
-      init = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 300
-      end,
-      opts = {
-          window = {
-              border = 'single',
-          }
-      }
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {
+            window = {
+                border = 'single',
+            }
+        }
     },
+    -- Support for typst syntax:
+    {
+        'kaarmu/typst.vim',
+        ft = 'typst',
+        lazy = false,
+    }
 }
