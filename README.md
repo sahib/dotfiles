@@ -30,7 +30,7 @@ I'm one of the few odd people that use light colorschemes for most things. That'
 Editor
 ------
 
-The most advanced thing is probably my Neovim config. Not really surprising since I spent my work day in this application. It uses packer and lua based configuration, which was copied from all over the internet although a good chunks comes from [here](optimizacija/neovim-config) (Thanks!).
+The most advanced thing is probably my Neovim config. Not really surprising since I spent my work day in this application. It uses lazy.vim and lua based configuration, which was copied from all over the internet although a good chunks comes from [here](optimizacija/neovim-config) (Thanks!).
 
 Packages
 --------
@@ -46,7 +46,7 @@ Packages
 * **udiskie2**: Automounter.
 * **most**: Pager.
 * **zathura**: PDF viewer (muPDF backend)
-* **exa**: Better ls
+* **eza**: Better ls
 * **mako**: Notification manager.
 * **swayidle:** Idle manager.
 * **swaylock:** Lock screen.
