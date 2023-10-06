@@ -13,7 +13,7 @@
 ]
 
 #columns(2, gutter: 12pt)[
-== General:
+== General
 
 - `:<leader>m` - Do some basic math.
 - `:Tabularize` - Align text in tables.
@@ -27,9 +27,9 @@
 
 == Version control
 
-- `:Git <subcommand>` - Execute git command (nice `:Git diff`)
+- `<leader>G` - Open Git UI (`:Neogit`)
 
-== Code:
+== Code
 
 - `gc` - Comment out lines in visual mode.
 - `gd` - Go to definition.
@@ -55,24 +55,28 @@
 - `:Lazy` - Manage plugins.
 - `:GoUpdateBinaries` - Install latest tools.
 
-== Go:
+== Complete
+
+- `<Tab>` - Start completion / Snippet hop
+- `<C-Space>` - Start completion (no prefix)
+
+== Go
 
 - `<leader>a` - Jump between test and code file (`:GoAlt`)
 - `<leader>gcf` - View coverage for file.
 - `<leader>gct` - View coverage for test.
 - `:GPToggle` - Open Go playground.
 - `:GoDebug` - debug current test.
-- `:GoFillStruct` - Add empty struct members.
-- `:GoFillSwitch` - Fill switch cases.
-- `:GoFillSwitch` - Fill switch cases.
+- `:GoFillStruct` - Add zero members to struct.
+- `:GoFillSwitch` - Fill missing switch cases.
 - `:GoAddTag` - Add json tags.
 - `:GoImpl [recv] [iface]` - Generate method stubs of `iface`
 
-== Finding things:
+== Finding things
 
 - `<leader>b` - Find buffer.
 - `<leader>s` - Find symbols.
-- `<leader>f` - Find symbols.
+- `<leader>f` - Find files.
 - `<leader>g` - Find string under cursor.
 - `<leader>h` - Find help topic.
 - `<leader>m` - Show current file in tree.
@@ -87,15 +91,10 @@
 - `<C-A-Left>` - Go one tab left.
 - `<C-A-Right>` - Go one tab right.
 
-== Complete
-
-- `<Tab>` - Start completion / Snippet hop
-- `<C-Space>` - Start completion (no prefix)
-
 == Misc
 
 - `<leader><` - Print "«"
-- `<leader>>` - Print "«"
+- `<leader>>` - Print "»"
 - `<leader>ev` - Edit vimrc
 - `:W / :Q` - Same as `:w` / `:q`
 - `v.` - Select increasing number of syntax scope (more `.` = more selection)

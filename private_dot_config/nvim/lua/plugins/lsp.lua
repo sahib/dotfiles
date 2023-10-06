@@ -9,7 +9,7 @@ return {
             require("mason").setup()
         end
     },
-    -- Auto-format files using their LSP functonality
+    -- Auto-format files using their LSP functionality
     {
         "lukas-reineke/lsp-format.nvim",
         opts = {
