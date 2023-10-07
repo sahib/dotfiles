@@ -9,6 +9,7 @@ return {
         },
         config = function()
             -- do format and import on save:
+            -- TODO: There seem to be two formatters running...
             local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
             vim.api.nvim_create_autocmd("BufWritePre", {
                 pattern = "*.go",
@@ -18,7 +19,10 @@ return {
                 group = format_sync_grp,
             })
 
-            require("go").setup()
+            require("go").setup({
+                -- Alter, willst du Stress? Ja.
+                trouble = true,
+            })
 
             -- NOTE: This works for Go only currently. There are other plugins that might be a bit better:
             -- https://www.dev-log.me/Jump_between_test_files_and_implementation_in_Vim

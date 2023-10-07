@@ -1,7 +1,7 @@
 return {
+    -- Show a bar on the left side of a window that indicates if a line was
+    -- added, modified or deleted.
     {
-        -- Show a bar on the left side of a window that indicates if a line was
-        -- added, modified or deleted.
         'lewis6991/gitsigns.nvim',
         event = 'VeryLazy',
         dependencies = {
@@ -11,22 +11,19 @@ return {
             require('gitsigns').setup()
         end
     },
+    -- Integration for lazygit (external program).
     {
-        "NeogitOrg/neogit",
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
         dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "nvim-telescope/telescope.nvim", -- optional
-            "sindrets/diffview.nvim",        -- optional
-            "ibhagwan/fzf-lua",              -- optional
+            "nvim-lua/plenary.nvim",
         },
         config = function ()
-            local neogit = require('neogit')
-            neogit.setup()
-            vim.keymap.set('', '<leader>G', function() neogit.open({kind = "auto"}) end, { desc = "Open Neogit" })
+            vim.keymap.set('', '<leader>G', '<Cmd>:LazyGit<CR>', { desc = "Open LazyGit" })
         end
     },
+    -- Use <leader>gh to open current file as github link:
     {
-        -- Use <leader>gh to open current file as github link:
         'ruanyl/vim-gh-line',
     }
 }

@@ -9,26 +9,22 @@ return {
             require("mason").setup()
         end
     },
-    -- Auto-format files using their LSP functionality
-    {
-        "lukas-reineke/lsp-format.nvim",
-        opts = {
-            -- the go plugin takes that over
-            -- and does some things like autoimports.
-            go = {
-                exclude = { "gopls" }
-            },
-        },
-    },
     -- Trouble shows a quickfix list with the current issues
     -- (i.e. warnings, errors or linting)
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            local opts = function(desc) return { noremap = true, silent = true, desc = desc } end
-            vim.api.nvim_set_keymap('n', '<leader>xx', '<cmd>TroubleToggle<CR>', opts("Toggle trouble"))
-            vim.api.nvim_set_keymap('n', '<leader>xq', '<cmd>TroubleToggle quickfix<CR>', opts("Toggle quickfix list"))
+            local trouble = require('trouble')
+            trouble.setup({
+                auto_open = false,
+                auto_close = true,
+            })
+
+            local opts = function(desc) return { silent = true, desc = desc } end
+            vim.keymap.set("n", "<leader>x", function() trouble.open() end, opts("Toggle trouble"))
+            vim.keymap.set("n", "[d", function() trouble.next({skip_groups = true, jump = true}) end, opts("Go to next diagnostic"))
+            vim.keymap.set("n", "]d", function() trouble.previous({skip_groups = true, jump = true}) end, opts("Go to prev diagnostic"))
         end,
     },
     -- Generally improved UI for LSP with many extra features.
@@ -42,7 +38,8 @@ return {
         config = function()
             require('navigator').setup({
                 lsp = {
-                    format_on_save = true,
+                    -- This seems to fuckup Go formatting:
+                    format_on_save = false,
                     -- Do not show the sign on the sign column:
                     code_action = {
                         sign = false,
@@ -50,6 +47,8 @@ return {
                     code_lens_action = {
                         sign = false,
                     },
+                    -- Don't open the damn quick fix window.
+                    display_diagnostic_qf = false,
                 },
             })
 

@@ -153,4 +153,11 @@ return {
         ft = 'typst',
         lazy = false,
     },
+    {
+        -- Use 'ga' (no preview) or 'gA' (with preview)
+        -- to align text easily using a pattern.
+        'echasnovski/mini.align',
+        version = false,
+        config = true,
+    },
 }

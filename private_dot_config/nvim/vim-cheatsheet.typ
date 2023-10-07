@@ -15,19 +15,26 @@
 #columns(2, gutter: 12pt)[
 == General
 
-- `:<leader>m` - Do some basic math.
-- `:Tabularize` - Align text in tables.
-- `<leader>cc` - Dismiss notifications (`:Noice dismiss`)
+- `gA` - Align text:
+  - `s`: Set split pattern.
+  - `j`: Justify left/right
+  - `m`: Set delimiter.
 - `<C-n>` - Open file tree:
-  - `r` - Rename
-  - `d` - Delete file
-  - `a` - Add file
-  - `C` - Use as root node
-  - `P` - Print absolute path
+  - `r` - Rename node.
+  - `d` - Delete node.
+  - `a` - Add file.
+  - `C` - Use as root node.
+  - `P` - Print absolute path.
 
 == Version control
 
-- `<leader>G` - Open Git UI (`:Neogit`)
+- `<leader>G` - Open `lazygit`:
+  - `c`: Commit.
+  - `p`: Pull.
+  - `s`: Stash.
+  - `P`: Push.
+  - `s`: Squash below.
+  - `z`: Undo last action.
 
 == Code
 
@@ -36,7 +43,7 @@
 - `gr` - Show references.
 - `gS / gJ` - Split/Join lines.
 - `K` - Show docs in normal mode.
-- `[d / ]d`- Go to next/prev diagnostic.
+- `[d / ]d` - Go to next/prev diagnostic.
 - `<leader>k` - Add highlight for symbol.
 - `<leader>gh` - Open line in Github.
 - `<leader>gb` - Blame line in Github.
@@ -47,18 +54,18 @@
 - `<leader>rn` - Rename symbol.
 - `<leader>la` - Run Code Lens action.
 - `<leader>ca` - Run Code action.
-- `<leader>xx` - Open Trouble window.
+- `<leader>x` - Open Trouble window.
+
+== Complete
+
+- `<Tab>` - Start completion / Snippet hop
+- `<C-Space>` - Start completion (no prefix)
 
 == Packages
 
 - `:Mason` - Install language servers.
 - `:Lazy` - Manage plugins.
 - `:GoUpdateBinaries` - Install latest tools.
-
-== Complete
-
-- `<Tab>` - Start completion / Snippet hop
-- `<C-Space>` - Start completion (no prefix)
 
 == Go
 
@@ -67,10 +74,9 @@
 - `<leader>gct` - View coverage for test.
 - `:GPToggle` - Open Go playground.
 - `:GoDebug` - debug current test.
-- `:GoFillStruct` - Add zero members to struct.
-- `:GoFillSwitch` - Fill missing switch cases.
+- `:GoFillStruct` - Add struct members.
 - `:GoAddTag` - Add json tags.
-- `:GoImpl [recv] [iface]` - Generate method stubs of `iface`
+- `:GoImpl [recv] [iface]` - Generate method stubs of `iface` on `recv`.
 
 == Finding things
 
@@ -93,9 +99,9 @@
 
 == Misc
 
-- `<leader><` - Print "«"
-- `<leader>>` - Print "»"
+- `<leader>< / >` - Print "«" / "»"
 - `<leader>ev` - Edit vimrc
 - `:W / :Q` - Same as `:w` / `:q`
+- `:<leader>m` - Do some basic math.
 - `v.` - Select increasing number of syntax scope (more `.` = more selection)
 ]

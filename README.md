@@ -56,6 +56,7 @@ Packages
 * **sxiv:** Image viewer.
 * **grimshot/slurp:** Screenshot taking.
 * **shikane:** Apply monitor profiles.
+* **lazygit:** Used as visual git editor in neovim.
 
 Fonts:
 
