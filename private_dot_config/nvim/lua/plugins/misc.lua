@@ -25,7 +25,28 @@ return {
     },
     -- Split/Join support (gS / gJ)
     {
-        'AndrewRadev/splitjoin.vim',
+        'Wansmer/treesj',
+        event = "VeryLazy",
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function()
+            require('treesj').setup({
+                use_default_keymaps = false,
+            })
+
+            local api = require('treesj')
+            vim.keymap.set('n', 'gm', api.toggle)
+            vim.keymap.set('n', 'gs', api.split)
+            vim.keymap.set('n', 'gj', api.join)
+            vim.keymap.set('n', 'gM', function()
+                api.toggle({ split = { recursive = true } })
+            end)
+            vim.keymap.set('n', 'gS', function()
+                api.split({ split = { recursive = true } })
+            end)
+            vim.keymap.set('n', 'gJ', function()
+                api.join({ split = { recursive = true } })
+            end)
+        end,
     },
     -- Make formatting tabular data easy using the :Tabularize command.
     -- Aligns tables based on regular expressions

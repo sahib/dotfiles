@@ -41,7 +41,7 @@
 - `gc` - Comment out lines in visual mode.
 - `gd` - Go to definition.
 - `gr` - Show references.
-- `gS / gJ` - Split/Join lines.
+- `gS / gJ / gM` - Split/Join/Toggle lines.
 - `K` - Show docs in normal mode.
 - `[d / ]d` - Go to next/prev diagnostic.
 - `<leader>k` - Add highlight for symbol.
