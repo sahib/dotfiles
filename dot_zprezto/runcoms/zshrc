@@ -1,32 +1,16 @@
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.oh-my-zsh
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-# Custom theme for zsh:
-export ZSH_THEME="lemur"
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
-# Do not care about case on completion:
-export CASE_SENSITIVE="false"
-
-# Do not update all unannounced:
-export DISABLE_AUTO_UPDATE="true"
-
-# Set the window title based on the current program:
-export DISABLE_AUTO_TITLE="false"
-
-# set a number of plugins:
-plugins=(git golang timer sudo ssh-agent gpg-agent zsh-syntax-highlighting cp aws colored-man-pages python last-working-dir)
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="false"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# load the oh-my-zsh plugins and themes:
-source $ZSH/oh-my-zsh.sh
-
+# Customize to your needs:
 # General setup:
 export EDITOR="nvim"
 export BROWSER=firefox
@@ -35,15 +19,6 @@ export TERM=xterm-kitty
 export TERMINAL="$XTERM"
 export GPG_TTY=$(tty)
 export PAGER="most"
-
-# Keys:
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
-bindkey '^[[5~' up-line-or-history
-
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # Go stuff:
 export GOPATH=$HOME/go
@@ -82,3 +57,12 @@ eval "$(zoxide init zsh)"
 if [ -f ~/.zshrc.extra ]; then
     source ~/.zshrc.extra
 fi
+
+export DEBUGINFOD_URLS=https://debuginfod.archlinux.org/packages
+
+# Add current time to the prompt (useful as history)
+prompt_current_time() {
+    date +"%%F{white}%H:%M:%S "
+}
+
+export PROMPT_LEAN_LEFT="prompt_current_time"
