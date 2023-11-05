@@ -18,10 +18,42 @@ return {
             })
         end
     },
-    -- show recent files on empty nvim command
-    -- and show nice fortunes on startup.
+    -- show recent files on empty nvim command.
     {
-        'mhinz/vim-startify',
+        'nvimdev/dashboard-nvim',
+        dependencies = { {'nvim-tree/nvim-web-devicons'}},
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                shortcut_type = 'number',
+                change_to_vcs_root = true,
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                    project = {
+                        enable = false,
+                    },
+                    shortcut = {
+                        { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+                        {
+                          icon = ' ',
+                          icon_hl = '@variable',
+                          desc = 'Files',
+                          group = 'Label',
+                          action = 'Telescope find_files',
+                          key = 'f',
+                        },
+                        {
+                          desc = ' Search',
+                          group = 'DiagnosticHint',
+                          action = 'Telescope live_grep',
+                          key = 's',
+                        },
+                    },
+                },
+            }
+        end,
     },
     -- Split/Join support (gS / gJ)
     {

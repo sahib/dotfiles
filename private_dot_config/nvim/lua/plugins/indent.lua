@@ -42,7 +42,7 @@ return {
                 highlight = highlight,
             },
             exclude = {
-                filetypes = {'text', 'markdown', 'help', 'startify', 'NvimTree'},
+                filetypes = {'text', 'markdown', 'help', 'startify', 'dashboard',  'NvimTree'},
                 buftypes = {'startify', 'NvimTree'},
             },
             scope = {

@@ -30,6 +30,7 @@ return {
                     component_separators = '|',
                     section_separators = { left = '', right = '' },
                     globalstatus = true,
+                    disabled_filetypes = { 'NVimTree', 'startup' }
                 },
                 sections = {
                     lualine_b = { {'diff', source = diff_source}, },
