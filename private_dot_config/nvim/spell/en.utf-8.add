@@ -1,2 +1,5 @@
 configs
 SyncNone
+versioned
+filesystem
+frecency

@@ -160,7 +160,7 @@ return {
         event = "VeryLazy",
         init = function()
             vim.o.timeout = true
-            vim.o.timeoutlen = 300
+            vim.o.timeoutlen = 800
         end,
         opts = {
             window = {
@@ -189,5 +189,37 @@ return {
         require("oil").setup()
         vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
       end
+    },
+    -- Jump between alternative files (i.e. test and implementation) using <leader>a
+    {
+        'rgroli/other.nvim',
+        config = function ()
+            require("other-nvim").setup({
+                mappings = {
+                    "golang",
+                    -- {
+                    --     context = "header",
+                    --     pattern = "(.*).c*$",
+                    --     target = "%1h",
+                    -- },
+                    -- {
+                    --     context = "implementation",
+                    --     pattern = "(.*).h$",
+                    --     target = "%1.c",
+                    -- },
+                },
+            })
+
+            vim.keymap.set('n', '<Leader>a', '<Cmd>Other<CR>', { silent = true, desc = 'Go to test file or back' })
+        end
+    },
+    {
+          "folke/flash.nvim",
+          event = "VeryLazy",
+          opts = {},
+          keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter_search() end, desc = "Flash Treesitter Search" },
+          },
     }
 }
