@@ -240,6 +240,11 @@ exec shikane
 # NetworkManager tray icon:
 exec nm-applet --indicator
 
+# HACK: xdg-desktop-portal does not see WAYLAND_DISPLAY for some reason. It's set by sway itself,
+#       so we need to convince it that it's indeed set. Required for screen sharing.
+exec_always systemctl --user set-environment "WAYLAND_DISPLAY=${WAYLAND_DISPLAY}"
+exec_always systemctl --user restart  xdg-desktop-portal
+
 # Set gtk theme / icon theme etc. here.
 exec_always {
     gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Light-Maia'

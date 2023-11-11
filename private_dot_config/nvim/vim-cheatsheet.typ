@@ -41,7 +41,7 @@
 - `gc` - Comment out lines in visual mode.
 - `gd` - Go to definition.
 - `gr` - Show references.
-- `gS / gJ` - Split/Join lines.
+- `gS / gJ / gM` - Split/Join/Toggle lines.
 - `K` - Show docs in normal mode.
 - `[d / ]d` - Go to next/prev diagnostic.
 - `<leader>k` - Add highlight for symbol.
@@ -69,7 +69,7 @@
 
 == Go
 
-- `<leader>a` - Jump between test and code file (`:GoAlt`)
+- `<leader>a` - Jump between test and code file.
 - `<leader>gcf` - View coverage for file.
 - `<leader>gct` - View coverage for test.
 - `:GPToggle` - Open Go playground.
@@ -83,9 +83,11 @@
 - `<leader>b` - Find buffer.
 - `<leader>s` - Find symbols.
 - `<leader>f` - Find files.
+- `<leader>F` - Find global files (frecency).
 - `<leader>g` - Find string under cursor.
 - `<leader>h` - Find help topic.
 - `<leader>m` - Show current file in tree.
+- `s / S` - jump/select based on search pattern.
 
 == Windows / Buffers / Tabs
 

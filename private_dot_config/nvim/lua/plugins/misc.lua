@@ -18,14 +18,67 @@ return {
             })
         end
     },
-    -- show recent files on empty nvim command
-    -- and show nice fortunes on startup.
+    -- show recent files on empty nvim command.
     {
-        'mhinz/vim-startify',
+        'nvimdev/dashboard-nvim',
+        dependencies = { {'nvim-tree/nvim-web-devicons'}},
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                shortcut_type = 'number',
+                change_to_vcs_root = true,
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                    project = {
+                        enable = false,
+                    },
+                    shortcut = {
+                        { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+                        {
+                          icon = ' ',
+                          icon_hl = '@variable',
+                          desc = 'Files',
+                          group = 'Label',
+                          action = 'Telescope find_files',
+                          key = 'f',
+                        },
+                        {
+                          desc = ' Search',
+                          group = 'DiagnosticHint',
+                          action = 'Telescope live_grep',
+                          key = 's',
+                        },
+                    },
+                },
+            }
+        end,
     },
     -- Split/Join support (gS / gJ)
     {
-        'AndrewRadev/splitjoin.vim',
+        'Wansmer/treesj',
+        event = "VeryLazy",
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function()
+            require('treesj').setup({
+                use_default_keymaps = false,
+            })
+
+            local api = require('treesj')
+            vim.keymap.set('n', 'gm', api.toggle)
+            vim.keymap.set('n', 'gs', api.split)
+            vim.keymap.set('n', 'gj', api.join)
+            vim.keymap.set('n', 'gM', function()
+                api.toggle({ split = { recursive = true } })
+            end)
+            vim.keymap.set('n', 'gS', function()
+                api.split({ split = { recursive = true } })
+            end)
+            vim.keymap.set('n', 'gJ', function()
+                api.join({ split = { recursive = true } })
+            end)
+        end,
     },
     -- Make formatting tabular data easy using the :Tabularize command.
     -- Aligns tables based on regular expressions
@@ -139,7 +192,7 @@ return {
         event = "VeryLazy",
         init = function()
             vim.o.timeout = true
-            vim.o.timeoutlen = 300
+            vim.o.timeoutlen = 800
         end,
         opts = {
             window = {
@@ -160,4 +213,45 @@ return {
         version = false,
         config = true,
     },
+    -- oil.nvim: open current dir as editable buffer with `-`
+    {
+      'stevearc/oil.nvim',
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      config = function ()
+        require("oil").setup()
+        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+      end
+    },
+    -- Jump between alternative files (i.e. test and implementation) using <leader>a
+    {
+        'rgroli/other.nvim',
+        config = function ()
+            require("other-nvim").setup({
+                mappings = {
+                    "golang",
+                    -- {
+                    --     context = "header",
+                    --     pattern = "(.*).c*$",
+                    --     target = "%1h",
+                    -- },
+                    -- {
+                    --     context = "implementation",
+                    --     pattern = "(.*).h$",
+                    --     target = "%1.c",
+                    -- },
+                },
+            })
+
+            vim.keymap.set('n', '<Leader>a', '<Cmd>Other<CR>', { silent = true, desc = 'Go to test file or back' })
+        end
+    },
+    {
+          "folke/flash.nvim",
+          event = "VeryLazy",
+          opts = {},
+          keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter_search() end, desc = "Flash Treesitter Search" },
+          },
+    }
 }

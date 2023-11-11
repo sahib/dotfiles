@@ -36,7 +36,7 @@ Packages
 --------
 
 * **kitty**: Terminal.
-* **zsh:** Shell.
+* **zsh:** Shell with **prezto** as base config.
 * **neovim**: Editor.
 * **sway**: Wayland compositor.
 * **waybar**: Statusbar on top.

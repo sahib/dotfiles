@@ -23,10 +23,6 @@ return {
                 -- Alter, willst du Stress? Ja.
                 trouble = true,
             })
-
-            -- NOTE: This works for Go only currently. There are other plugins that might be a bit better:
-            -- https://www.dev-log.me/Jump_between_test_files_and_implementation_in_Vim
-            vim.keymap.set('n', '<Leader>a', '<Cmd>GoAlt!<CR>', { silent = true, desc = 'Go to test file or back' })
         end,
         event = { "CmdlineEnter" },
         ft = { "go", 'gomod' },

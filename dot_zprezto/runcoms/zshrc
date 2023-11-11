@@ -1,0 +1,69 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs:
+# General setup:
+export EDITOR="nvim"
+export BROWSER=firefox
+export XTERM="kitty"
+export TERM=xterm-kitty
+export TERMINAL="$XTERM"
+export GPG_TTY=$(tty)
+export PAGER="most"
+
+# Go stuff:
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GOBIN=$GOPATH/bin
+
+# Add own scripts and go output to path:
+export PATH="$GOBIN:$PATH"
+export PATH="/home/$USER/bin/:$PATH"
+
+# enable coredumps:
+ulimit -c unlimited
+
+# Because my fingers don't learn new tool names anymore:
+alias ag=rg
+alias ranger=lf
+alias vi=nvim
+alias vim=nvim
+alias gdk='git difftool --no-symlinks --dir-diff'
+alias ls='eza --git --links --inode --header'
+alias ll='eza --git --links --inode --header -l'
+
+# Make fzf pretty by default:
+export BAT_THEME="Solarized (light)"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat --style=numbers --color=always --line-range :100 --theme=\"${BAT_THEME}\" {}'"
+
+# Load some extra aliases I use for work mostly:
+[ -f "~/.zshrc.extra" ] && source "~/.zshrc.extra"
+
+# Bump the history a bit:
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+eval "$(zoxide init zsh)"
+
+if [ -f ~/.zshrc.extra ]; then
+    source ~/.zshrc.extra
+fi
+
+export DEBUGINFOD_URLS=https://debuginfod.archlinux.org/packages
+
+# Add current time to the prompt (useful as history)
+prompt_current_time() {
+    date +"%%F{white}%H:%M:%S "
+}
+
+export PROMPT_LEAN_LEFT="prompt_current_time"
