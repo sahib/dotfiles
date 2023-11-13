@@ -106,4 +106,17 @@
 - `:W / :Q` - Same as `:w` / `:q`
 - `:<leader>m` - Do some basic math.
 - `v.` - Select increasing number of syntax scope (more `.` = more selection)
+- `ysiw)` - Add »()« around the curent word.
+- `cst` - Change tags to input.
+- `dst` - Delete HTML tags.
+
+== Normal stuff
+
+- `cc`: Change line.
+- `%`: Move to other brace.
+- `zz`: Center on screen.
+- `C-u`: Move page up.
+- `C-d`: Move page down.
+- `gp`: Paste clipboard in normal mode.
+- `v=`: Fix indent.
 ]

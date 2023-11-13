@@ -1,3 +1,4 @@
+-- vim.loader.enable()
 require('basics')
 require('globals')
 require('keymappings')
