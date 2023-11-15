@@ -1,217 +1,187 @@
-/* NOTE: This is GTK CSS Syntax. See here for more documentation:
+/* =============================================================================
  *
- * https://docs.gtk.org/gtk4/css-properties.html
- */
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
 
-@define-color base02   #24292e;
-@define-color base01   #dbe9f9;
-@define-color base00   #666666;
-@define-color base2    #ffffff;
-@define-color base3    #d1d5da;
-@define-color yellow   #dbab09;
-@define-color orange   #ffab02;
-@define-color red      #d73a49;
-@define-color magenta  #d91a79;
-@define-color violet   #5a32a3;
-@define-color blue     #0366d6;
-@define-color cyan     #0598bc;
-@define-color green    #38d745;
-@define-color custom-border @base00;
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+
+/*
+Polar Night
+nord0  #2e3440
+nord1  #3b4252
+nord2  #434c5e
+nord3  #4c566a
+Snow Storm
+nord4  #d8dee9
+nord5  #e5e9f0
+nord6  #eceff4
+Frost
+nord7  #8fbcbb
+nord8  #88c0d0
+nord9  #81a1c1
+nord10 #5e81ac
+Aurora
+nord11 #bf616a
+nord12 #d08770
+nord13 #ebcb8b
+nord14 #a3be8c
+nord15 #b48ead
+*/
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
 
 * {
-	font-size: 13px;
+    color: #24292e;
+    border: 0;
+    border-radius: 0;
+    padding: 0 0;
     font-family: JetBrainsMono Nerd Font;
-    padding: 3px 3px 3px 3px;
-}
-
-window.eDP-1 * {
-	font-size: 14px;
-}
+    font-size: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-bottom:3px;
+   }
 
 window#waybar {
-	background: @base2;
-	color:  @base02;
-
-    /* border to match the border on windows of sway */
-    border: solid @base01;
-    border-width: 0px 0px 1px 0px;
-}
-
-#cpu {
-    /* no idea why that margin is needed */
-    margin-top: 5px;
-}
-
-#workspaces,
-#mode,
-#window,
-#taskbar,
-#idle_inhibitor,
-#custom-weather,
-#pulseaudio,
-#memory,
-#cpu,
-#clock,
-#battery,
-#backlight,
-#disk,
-#custom-pacman,
-#custom-aur,
-#custom-swap,
-#custom-playerctl,
-#temperature,
-#network,
-#custom-load,
-#tray {
-	padding: 0px 7px 0px 7px;
-	background: @base2;
-	text-shadow: 1px 1px 2px rgba(147, 161, 161, 0.4);
-}
-
-#custom-load,
-#custom-swap,
-#disk,
-#backlight,
-#temperature {
-    /* Create strip effect on the right with lighter color */
-	background: @base3;
-	border-radius: 6px 6px 6px 6px;
-}
-
-#custom-load {
-    border: solid @custom-border;
-	border-radius: 2px;
-    border-width: 1px 1px 1px 1px;
-	padding-right: 5px;
-    background-color: alpha(@red, 0.5);
-    margin-right: 3px;
-}
-
-#custom-swap {
-    border: solid @custom-border;
-	border-radius: 2px;
-    border-width: 1px 1px 1px 1px;
-	padding-right: 5px;
-    background-color: alpha(@orange, 0.5);
-}
-
-#disk{
-    border: solid @custom-border;
-	border-radius: 2px;
-    border-width: 1px 1px 1px 1px;
-	padding-right: 5px;
-    background-color: alpha(@yellow, 0.5);
-}
-
-#backlight{
-    border: solid @custom-border;
-	border-radius: 2px;
-    border-width: 1px 1px 1px 1px;
-	padding-right: 5px;
-    background-color: alpha(@green, 0.5);
-}
-
-#temperature {
-    border: solid @custom-border;
-	border-radius: 2px;
-    border-width: 1px 1px 1px 1px;
-	padding-right: 5px;
-    background-color: alpha(@blue, 0.5);
-}
-
-#workspaces {
-}
-
-#mode {
-	background: @magenta;
-}
-
-#disk.1,
-#memory {
-	padding-right: 3px;
-    margin-right: 3px;
-}
-#disk.2,
-#custom-swap {
-	padding-left: 3px;
-}
-
-/* MIDDLE PART */
-
-#custom-weather {
-    border: solid @custom-border;
-	border-radius: 0px 0px 0px 0px;
-    border-width: 1px 0px 1px 1px;
-    background-color: alpha(@cyan, 0.5);
-}
-
-#custom-playerctl {
-    border: solid @custom-border;
-	border-radius: 0px 0px 0px 0px;
-    border-width: 1px 0px 1px 0px;
-    background-color: alpha(@blue, 0.5);
-}
-
-#clock {
-    border: solid @custom-border;
-	border-radius: 0px 0px 0px 0px;
-    border-width: 1px 0px 1px 0px;
-    padding-top: 5px;
-	padding-right: 5px;
-	padding-left: 5px;
-    background-color: alpha(@violet, 0.5);
-}
-
-#custom-pacman {
-    border: solid @custom-border;
-	border-radius: 0px 2px 2px 0px;
-    border-width: 1px 1px 1px 0px;
-	padding-left: 5px;
-    background-color: alpha(@magenta, 0.5);
-}
-
-#custom-weather,
-#idle_inhibitor {
-	border-radius: 0px 2px 2px 0px;
-}
-
-/* WORKPLACE SETTINGS */
-
-#workspaces {
-	padding: 2px;
+    background: #ffffff;
 }
 
 #workspaces button {
-    border: solid @custom-border;
-	border-radius: 2px 2px 2px 2px;
-    border-width: 1px 1px 1px 1px;
-	padding-left: 5px;
-	padding-right: 7px;
-    margin-left: 2px;
-    margin-right: 2px
-}
-
-#workspaces button:hover {
-	background: alpha(@violet, 0.5);
-    border-color: @base03;
-}
-
-#workspaces button.active:hover {
-    border-color: @base03;
-}
-
-#workspaces button.visible {
-    /* Currently visible but not focused workplace,
-     * typically on another output */
-    background: alpha(@blue, 0.25);
+    padding: 2px 0px;
+    border-bottom: 2px;
+    color: #eceff4;
+    border-color: #d8dee9;
+    border-style: solid;
+    margin-top:2px;
 }
 
 #workspaces button.focused {
-	background: alpha(@green, 0.75);
+    border-color: #a3be8c;
+}
+
+#workspaces button.visible {
+    border-color: #81a1c1;
 }
 
 #workspaces button.urgent {
-    /* workplace with urgent apps,
-     * takes precedence over focused */
-    background: alpha(@magenta, 0.5);
+    border-color: #b48ead;
 }
+
+#mode {
+    color: #ebcb8b;
+}
+
+#clock, #cpu, #memory,#idle_inhibitor, #temperature,#custom-keyboard-layout, #backlight, #network, #pulseaudio, #mode, #tray, #window,#custom-launcher,#custom-power,#custom-pacman {
+    padding: 0 3px;
+    border-bottom: 2px;
+    border-style: solid;
+}
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+
+#clock {
+ color:#a3be8c;
+}
+
+#backlight {
+    color: #ebcb8b;
+}
+
+#battery {
+    color: #384e59;
+}
+
+#battery.charging {
+    color: #81a1c1;
+}
+
+@keyframes blink {
+    to {
+        color: #4c566a;
+        background-color: #eceff4;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: #bf616a;
+    color: #eceff4;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+    color:#a3be8c ;
+}
+
+#memory {
+    color: #d3869b;
+}
+
+#network.disabled {
+    color:#bf616a;
+}
+
+#network{
+    color:#a3be8c;
+}
+
+#network.disconnected {
+    color: #bf616a;
+}
+
+#pulseaudio {
+    color: #b48ead;
+}
+
+#pulseaudio.muted {
+    color: #3b4252;
+}
+
+#temperature {
+    color: #8fbcbb;
+}
+
+#temperature.critical {
+    color: #bf616a;
+}
+
+#idle_inhibitor {
+   color: #ebcb8b;
+}
+
+#tray {
+}
+
+#custom-launcher,#custom-power{
+    border-style: hidden;
+    margin-top:2px;
+}
+
+#window{
+    border-style: hidden;
+    margin-top:1px;
+}
+#mode{
+    margin-bottom:3px;
+}
+
+#custom-keyboard-layout{
+   color:#d08770;
+}
+

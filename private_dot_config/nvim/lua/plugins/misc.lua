@@ -148,6 +148,20 @@ return {
             require('nvim_comment').setup()
         end
     },
+    -- This plugin is a dependency to noice.
+    -- Configure the notifications to lower right corner.
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            require('notify').setup({
+                level = vim.log.levels.INFO,
+                timeout = 25,
+                render = 'compact',
+                stages = 'fade',
+                top_down = false,
+            })
+        end
+    },
     -- Change the UI for the cmdline, popups and search
     {
         "folke/noice.nvim",
@@ -170,6 +184,10 @@ return {
                     hover = {
                         enabled = false,
                     },
+                },
+                notify = {
+                    enabled = true,
+                    view = 'virtualtext',
                 },
                 -- you can enable a preset for easier configuration
                 presets = {
@@ -245,6 +263,7 @@ return {
             vim.keymap.set('n', '<Leader>a', '<Cmd>Other<CR>', { silent = true, desc = 'Go to test file or back' })
         end
     },
+    -- Jump easily to a label during searching or directly filter or select with s / S
     {
           "folke/flash.nvim",
           event = "VeryLazy",
@@ -253,5 +272,16 @@ return {
             { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
             { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter_search() end, desc = "Flash Treesitter Search" },
           },
+    },
+    -- Make it easy to surround things with quotes, parantheses or other tags.
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
     }
 }

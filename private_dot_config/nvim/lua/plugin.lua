@@ -17,7 +17,16 @@ require('lazy').setup("plugins", {
         -- reload doesn't really work for me. Disable it.
         enabled = false,
     },
+    defaults = {
+        lazy = false,
+    },
+    concurrency = 1,
     ui = {
         border = 'single',
+    },
+    performance = {
+        cache = {
+            enabled = false,
+        }
     }
 })
