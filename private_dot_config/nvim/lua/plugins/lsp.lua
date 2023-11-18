@@ -31,12 +31,17 @@ return {
     -- Default keybindings: https://github.com/ray-x/navigator.lua#default-keymaps
     {
         'ray-x/navigator.lua',
+        event = 'VeryLazy',
         dependencies = {
-            { 'ray-x/guihua.lua',     run = 'cd lua/fzy && make' },
+            {
+                'ray-x/guihua.lua',
+                run = 'cd lua/fzy && make',
+            },
             { 'neovim/nvim-lspconfig' },
         },
         config = function()
             require('navigator').setup({
+                transparency = 100,
                 lsp = {
                     -- This seems to fuckup Go formatting:
                     format_on_save = false,

@@ -3,3 +3,5 @@ SyncNone
 versioned
 filesystem
 frecency
+coroutines
+coroutine

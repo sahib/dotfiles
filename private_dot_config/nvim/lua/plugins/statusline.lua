@@ -25,12 +25,51 @@ return {
             end
 
             local theme_spec = require('github-theme.spec').load('github_light')
+
+            -- This is an adjusted version of the github-theme's lualine config:
+            --
+            local lualine_theme = function()
+                local C = require('github-theme.lib.color')
+                local function blend(color, a)
+                    return C(theme_spec.bg1):blend(C(color), a):to_css()
+                end
+
+                local p = theme_spec.palette
+                local tint = function(color)
+                    return {
+                        a = { bg = theme_spec.bg1, fg = color },
+                        b = { bg = theme_spec.bg1, fg = p.black.base },
+                        c = { bg = theme_spec.bg1, fg = p.black.base },
+                    }
+                end
+
+                local inactive_hi = { bg = theme_spec.bg0, fg = blend(theme_spec.fg1, 0.3) }
+
+                -- Fix for https://github.com/projekt0n/github-nvim-theme/issues/175
+                vim.cmd('hi! link StatusLine Normal')
+
+                return {
+                    normal = tint(p.blue.base),
+                    insert = tint(p.green.base),
+                    command = tint(p.magenta.bright),
+                    visual = tint(p.yellow.base),
+                    replace = tint(p.red.base),
+                    terminal = tint(p.orange),
+                    inactive = {
+                        a = inactive_hi,
+                        b = inactive_hi,
+                        c = inactive_hi,
+                    },
+                }
+            end
+
             require('lualine').setup({
                 options = {
-                    component_separators = '|',
-                    section_separators = { left = '', right = '' },
+                    component_separators = '',
+                    section_separators = { left = '', right = '' },
                     globalstatus = true,
-                    disabled_filetypes = { 'NVimTree', 'startup' }
+                    disabled_filetypes = { 'NVimTree', 'startup' },
+                    theme = lualine_theme(),
                 },
                 sections = {
                     lualine_b = { {'diff', source = diff_source}, },

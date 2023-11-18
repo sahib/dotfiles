@@ -185,3 +185,16 @@ window#waybar {
    color:#d08770;
 }
 
+tooltip {
+  color: black;
+  background-color: white;
+  text-shadow: none;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+tooltip * {
+  color: black;
+  text-shadow: none;
+}

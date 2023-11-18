@@ -39,6 +39,7 @@ alias vim=nvim
 alias gdk='git difftool --no-symlinks --dir-diff'
 alias ls='eza --git --links --inode --header'
 alias ll='eza --git --links --inode --header -l'
+alias drop_page_cache='sync; echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null'
 
 # Make fzf pretty by default:
 export BAT_THEME="Solarized (light)"
