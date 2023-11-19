@@ -86,7 +86,6 @@
 - `<leader>F` - Find global files (frecency).
 - `<leader>g` - Find string under cursor.
 - `<leader>h` - Find help topic.
-- `<leader>m` - Show current file in tree.
 - `s / S` - jump/select based on search pattern.
 
 == Windows / Buffers / Tabs
@@ -120,3 +119,12 @@
 - `gp`: Paste clipboard in normal mode.
 - `v=`: Fix indent.
 ]
+
+== File Management
+
+- `:Oil`:
+  - `C-s`: Select child in vsplit.
+  - `_`: Open current working directory.
+  - `-`: Open parent directory.
+  - `~`: Change directory to current one.
+- `<leader>n` - Show current in file tree.
