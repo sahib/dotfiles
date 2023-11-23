@@ -5,6 +5,8 @@ return {
         dependencies = { { 'nvim-lua/plenary.nvim' } },
         config = function()
             local actions = require("telescope.actions")
+            local trouble = require("trouble.providers.telescope")
+
             require("telescope").setup({
                 extensions = {
                     fzy_native = {
@@ -17,6 +19,13 @@ return {
                         i = {
                             -- Exit immediately when hitting ESC
                             ["<esc>"] = actions.close,
+
+                            -- Send contents to trouble window
+                            ["<c-t>"] = trouble.open_with_trouble,
+                        },
+                        n = {
+                            -- Send contents to trouble window
+                            ["<c-t>"] = trouble.open_with_trouble,
                         },
                     },
                 },

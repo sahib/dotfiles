@@ -1,6 +1,6 @@
 #set text(
     font: "Roboto Slab",
-    size: 8pt
+    size: 9pt
 )
 #set page(
     paper: "a5"
@@ -54,7 +54,16 @@
 - `<leader>rn` - Rename symbol.
 - `<leader>la` - Run Code Lens action.
 - `<leader>ca` - Run Code action.
-- `<leader>x` - Open Trouble window.
+
+== Trouble
+
+- `<leader>x` - Toggle Trouble window.
+- `<leader>xw` - Trouble Workspace Diagnostics.
+- `<leader>xd` - Trouble Document Diagnostics.
+- `<leader>xl` - Trouble Location List.
+- `<leader>xq` - Trouble Quickfix.
+- `[[ / ]]` - Next/Prev Trouble entry.
+- `<C-t>` - Send telescope contents to Trouble.
 
 == Complete
 
@@ -128,3 +137,20 @@
   - `-`: Open parent directory.
   - `~`: Change directory to current one.
 - `<leader>n` - Show current in file tree.
+
+== Firefox / Tridactyl
+
+- `f`: Follow link.
+- `b`: List of open tabs.
+- `s`: Google search.
+- `H / L`: Go back/forth in history.
+- `/`: Search
+  - `<C-g>`: Go to next match.
+  - `<C-G>`: Go to prev match.
+- `v`: Visual mode
+  - `s`: Search selected text
+  - `y`: Copy to clipboard
+- `]]`: Guess next page
+- `m[A-Z]`: Mark tab with letter.
+- ``\``` `[A-Z]`: Jump to mark.
+- ``\` \```: Jump back.
