@@ -73,6 +73,14 @@ return {
                             action = 'q',
                             key = 'q',
                         },
+                        {
+                            icon = '🆕 ',
+                            desc = 'New buffer',
+                            icon_hl = '@variable',
+                            group = 'Label',
+                            action = 'enew',
+                            key = 'e',
+                        },
                     },
                 },
             }
@@ -297,5 +305,5 @@ return {
                 -- Configuration here, or leave empty to use defaults
             })
         end
-    }
+    },
 }

@@ -5,3 +5,5 @@ filesystem
 frecency
 coroutines
 coroutine
+seldomly
+preallocated

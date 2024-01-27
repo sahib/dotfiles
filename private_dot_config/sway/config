@@ -121,22 +121,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# GitHub based colorscheme:
-set $base02	 #24292e
-set $base01	 #dbe9f9
-set $base00	 #666666
-set $base2	 #ffffff
-set $base3	 #d1d5da
-
-set $yellow  #dbab09
-set $orange  #ffab02
-set $red     #d73a49
-set $magenta #f95a99
-set $violet  #5a32a3
-set $blue    #0366d6
-set $cyan    #0598bc
-set $green   #58f785
-
+include theme_current.cfg
 
 default_border pixel 2
 default_floating_border normal
@@ -144,12 +129,12 @@ titlebar_border_thickness 0
 hide_edge_borders both
 smart_borders on
 
-# class                 border  backgr.  text    indicator child_border
-client.focused          $green   $green   $base02 $green    $blue
-client.focused_inactive $base2   $base2   $base00 $base2    $blue
-client.unfocused        $base2   $base2   $base00 $base2    $blue
-client.urgent           $magenta $magenta $base02 $magenta  $blue
-client.background       $base00
+# class                 border   bg       text  indicator child_border
+client.focused          $green   $green   $fg   $green    $blue
+client.focused_inactive $bg      $bg      $fg   $bg       $blue
+client.unfocused        $bg      $bg      $fg   $bg       $blue
+client.urgent           $magenta $magenta $fg   $magenta  $blue
+client.background       $fg
 
 bar {
     swaybar_command waybar
@@ -168,7 +153,7 @@ bindsym $mod+F6 exec mpv --fullscreen ~/clips/krasses_pferd.webm
 bindsym $mod+F7   exec playerctl -p playerctld previous
 bindsym $mod+F8   exec playerctl -p playerctld play-pause
 bindsym $mod+F9   exec playerctl -p playerctld next
-bindsym $mod+F10  exec playerctl -p playerctld volume 0
+bindsym $mod+F10  exec ~/bin/toggle-dark-light.sh
 bindsym $mod+F11  exec playerctl -p playerctld volume -0.1
 bindsym $mod+F12  exec playerctl -p playerctld volume +0.2
 

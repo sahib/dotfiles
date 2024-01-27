@@ -24,11 +24,12 @@ return {
               end
             end
 
-            local theme_spec = require('github-theme.spec').load('github_light')
+            local theme_spec = require('github-theme.spec').load(vim.g.colors_name)
 
             -- This is an adjusted version of the github-theme's lualine config:
             --
             local lualine_theme = function()
+                print('lualine theme called!')
                 local C = require('github-theme.lib.color')
                 local function blend(color, a)
                     return C(theme_spec.bg1):blend(C(color), a):to_css()
@@ -69,7 +70,7 @@ return {
                     section_separators = { left = '', right = '' },
                     globalstatus = true,
                     disabled_filetypes = { 'NVimTree', 'startup' },
-                    theme = lualine_theme(),
+                    -- theme = lualine_theme(), -- this sadly breaks on colorscheme changes.
                 },
                 sections = {
                     lualine_b = { {'diff', source = diff_source}, },

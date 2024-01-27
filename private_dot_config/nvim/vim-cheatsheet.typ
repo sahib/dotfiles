@@ -43,7 +43,6 @@
 - `gr` - Show references.
 - `gS / gJ / gM` - Split/Join/Toggle lines.
 - `K` - Show docs in normal mode.
-- `[d / ]d` - Go to next/prev diagnostic.
 - `<leader>k` - Add highlight for symbol.
 - `<leader>gh` - Open line in Github.
 - `<leader>gb` - Blame line in Github.
@@ -87,7 +86,7 @@
 - `:GoAddTag` - Add json tags.
 - `:GoImpl [recv] [iface]` - Generate method stubs of `iface` on `recv`.
 
-== Finding things
+== Telescope
 
 - `<leader>b` - Find buffer.
 - `<leader>s` - Find symbols.
@@ -96,6 +95,10 @@
 - `<leader>g` - Find string under cursor.
 - `<leader>h` - Find help topic.
 - `s / S` - jump/select based on search pattern.
+- `<C-v>` - Open find as vsplit.
+- `<C-t>` - Open find as tab.
+- `<leader>p` - Open clipboard manager.
+  - `<C-p>` - Paste selected entry.
 
 == Windows / Buffers / Tabs
 
