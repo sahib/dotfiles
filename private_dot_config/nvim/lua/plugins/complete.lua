@@ -4,79 +4,70 @@ local has_words_before = function()
 end
 
 local config = function()
-    -- Set configuration for specific filetype.
-    local cmp = require('cmp')
+    -- Set up nvim-cmp.
+    local cmp = require'cmp'
     local luasnip = require('luasnip')
-    local lspkind = require('lspkind')
-    cmp.setup({
-        -- Integrate snippets as completion source.
-        require('cmp_luasnip_choice').setup({
-            auto_open = true,
-        });
 
-        formatting = {
-            format = lspkind.cmp_format({
-                mode = 'symbol',
-            }),
-        },
-        sources = cmp.config.sources({
-            {name = "nvim_lsp"},
-            {name = "luasnip_choice"},
-            {name = "path"},
-            {name = "buffer"},
-            {name = "calc"},
-        }),
+    cmp.setup({
         completion = {
             autocomplete = false,
         },
         snippet = {
             expand = function(args)
-                require('luasnip').lsp_expand(args.body)
-            end
+                luasnip.lsp_expand(args.body)
+            end,
         },
         window = {
-           completion = cmp.config.window.bordered(),
-           documentation = cmp.config.window.bordered(),
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
-            ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
             ['<C-b>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
             ["<Tab>"] = cmp.mapping(function(fallback)
-                if luasnip.expand_or_jump() then
-                  luasnip.expand_or_jump()
-                elseif cmp.visible() then
-                  cmp.select_next_item()
+                if cmp.visible() then
+                    cmp.select_next_item()
+                elseif luasnip.expand_or_locally_jumpable() then
+                    luasnip.expand_or_jump()
                 elseif has_words_before() then
-                  cmp.complete()
+                    cmp.complete()
                 else
-                  fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+                    fallback()
                 end
             end, { "i", "s" }),
             ["<S-Tab>"] = cmp.mapping(function(fallback)
-                if luasnip.jumpable(-1) then
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                elseif luasnip.jumpable(-1) then
                     luasnip.jump(-1)
-                elseif cmp.visible() then
-                  cmp.select_prev_item()
                 else
                     fallback()
                 end
             end, { "i", "s" }),
         }),
+        sources = cmp.config.sources({
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+        }, {
+            { name = 'buffer' },
+            { name = "path" },
+        })
     })
 
+    -- Set configuration for specific filetype.
     cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources({
-            { name = 'cmp_git' },
+            { name = 'git' },
         }, {
             { name = 'buffer' },
         })
     })
 
-    -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline('/', {
+    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline({ '/', '?' }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
             { name = 'buffer' },
@@ -93,6 +84,26 @@ local config = function()
             { name = 'cmdline' }
         })
     })
+
+    -- Set up lspconfig.
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    require('lspconfig')['gopls'].setup {
+        cmd = {'gopls'},
+        capabilities = capabilities,
+        settings = {
+            gopls = {
+                experimentalPostfixCompletions = true,
+                analyses = {
+                    unusedparams = true,
+                    shadow = true,
+                },
+                staticcheck = true,
+            },
+        },
+        init_options = {
+            usePlaceholders = true,
+        }
+    }
 end
 
 return {
