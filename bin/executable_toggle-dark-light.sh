@@ -85,9 +85,11 @@ gtk_toggle() {
     if [ "${current_theme}" = "${GTK_THEME_DARK}" ]; then
         echo "-- gtk: switching to ${GTK_THEME_LIGHT}"
         gsettings set org.gnome.desktop.interface gtk-theme "${GTK_THEME_LIGHT}"
+        gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     else
         echo "-- gtk: switching to ${GTK_THEME_DARK}"
         gsettings set org.gnome.desktop.interface gtk-theme "${GTK_THEME_DARK}"
+        gsettings set org.gnome.desktop.interface color-scheme prefer-light
     fi
 }
 
@@ -117,7 +119,48 @@ nvim_toggle() {
 
 ###########
 
+SWAY_THEME_LIGHT="$HOME/.config/sway/theme_light.cfg"
+SWAY_THEME_DARK="$HOME/.config/sway/theme_dark.cfg"
+SWAY_THEME_CURR="$HOME/.config/sway/theme_current.cfg"
+
+sway_toggle() {
+    local next_theme
+    local curr_theme
+
+    curr_theme="$(readlink "$SWAY_THEME_CURR")"
+    if [ "$curr_theme" = "theme_dark.cfg" ]; then
+        next_theme="${SWAY_THEME_LIGHT}"
+    else
+        next_theme="${SWAY_THEME_DARK}"
+    fi
+
+    # Source the colors directly from the theme file in a rather insecure way:
+    eval "$(
+        grep -v '^#' "${next_theme}" | \
+        awk '{ print "export SWAY_" toupper(substr($2, 2)) "=" $3 } '
+    )"
+
+    # Directly modify the colors instead of reloading all of sway:
+    swaymsg client.focused          "$SWAY_GREEN"   "$SWAY_GREEN"   "$SWAY_FG"  "$SWAY_GREEN"   "$SWAY_BLUE"
+    swaymsg client.focused_inactive "$SWAY_BG"      "$SWAY_BG"      "$SWAY_FG"  "$SWAY_BG"      "$SWAY_BLUE"
+    swaymsg client.unfocused        "$SWAY_BG"      "$SWAY_BG"      "$SWAY_FG"  "$SWAY_BG"      "$SWAY_BLUE"
+    swaymsg client.urgent           "$SWAY_MAGENTA" "$SWAY_MAGENTA" "$SWAY_FG"  "$SWAY_MAGENTA" "$SWAY_BLUE"
+    swaymsg client.focused          "$SWAY_GREEN"   "$SWAY_GREEN"   "$SWAY_FG"  "$SWAY_GREEN"   "$SWAY_BLUE"
+    swaymsg client.focused_inactive "$SWAY_BG"      "$SWAY_BG"      "$SWAY_FG"  "$SWAY_BG"      "$SWAY_BLUE"
+    swaymsg client.unfocused        "$SWAY_BG"      "$SWAY_BG"      "$SWAY_FG"  "$SWAY_BG"      "$SWAY_BLUE"
+    swaymsg client.urgent           "$SWAY_MAGENTA" "$SWAY_MAGENTA" "$SWAY_FG"  "$SWAY_MAGENTA" "$SWAY_BLUE"
+    swaymsg client.background       "$SWAY_FG"
+
+    # Also exchange on disk, so next start of sway is correct too:
+    rm -f "${SWAY_THEME_CURR}"
+    ln -sfr "${next_theme}"  "${SWAY_THEME_CURR}"
+}
+
+
+###########
+
 nvim_toggle
 kitty_toggle
 waybar_toggle
 gtk_toggle
+sway_toggle
