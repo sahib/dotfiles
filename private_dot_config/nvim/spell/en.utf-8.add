@@ -3,3 +3,7 @@ SyncNone
 versioned
 filesystem
 frecency
+coroutines
+coroutine
+seldomly
+preallocated

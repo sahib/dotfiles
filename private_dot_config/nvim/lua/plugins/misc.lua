@@ -35,20 +35,51 @@ return {
                         enable = false,
                     },
                     shortcut = {
-                        { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
                         {
-                          icon = ' ',
-                          icon_hl = '@variable',
-                          desc = 'Files',
-                          group = 'Label',
-                          action = 'Telescope find_files',
-                          key = 'f',
+                            desc = '󰊳 Update',
+                            action = 'Lazy update',
+                            group = 'Label',
+                            key = 'u',
                         },
                         {
-                          desc = ' Search',
-                          group = 'DiagnosticHint',
-                          action = 'Telescope live_grep',
-                          key = 's',
+                            icon = ' ',
+                            icon_hl = '@variable',
+                            desc = 'Config',
+                            group = 'Label',
+                            action = 'cd ~/.config/nvim/lua/plugins | e .',
+                            key = 'c',
+                        },
+                        {
+                            icon = ' ',
+                            icon_hl = '@variable',
+                            desc = 'Files',
+                            group = 'Label',
+                            action = 'Telescope find_files',
+                            key = 'f',
+                        },
+                        {
+                            icon = ' ',
+                            desc = 'Search',
+                            icon_hl = '@variable',
+                            group = 'Label',
+                            action = 'Telescope live_grep',
+                            key = 'g',
+                        },
+                        {
+                            icon = ' ',
+                            desc = 'Quit',
+                            icon_hl = '@variable',
+                            group = 'Label',
+                            action = 'q',
+                            key = 'q',
+                        },
+                        {
+                            icon = '🆕 ',
+                            desc = 'New buffer',
+                            icon_hl = '@variable',
+                            group = 'Label',
+                            action = 'enew',
+                            key = 'e',
                         },
                     },
                 },
@@ -198,7 +229,7 @@ return {
             })
 
             -- Dismiss notifications if they're too annoying.
-            vim.keymap.set('n', '<Leader>cc', function() noice.cmd('dismiss') end, {
+            vim.keymap.set('n', '<Leader>c', function() noice.cmd('dismiss') end, {
                 silent = true,
                 desc = "Dismiss notifications",
             })
@@ -230,15 +261,6 @@ return {
         'echasnovski/mini.align',
         version = false,
         config = true,
-    },
-    -- oil.nvim: open current dir as editable buffer with `-`
-    {
-      'stevearc/oil.nvim',
-      dependencies = { "nvim-tree/nvim-web-devicons" },
-      config = function ()
-        require("oil").setup()
-        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-      end
     },
     -- Jump between alternative files (i.e. test and implementation) using <leader>a
     {
@@ -283,5 +305,5 @@ return {
                 -- Configuration here, or leave empty to use defaults
             })
         end
-    }
+    },
 }

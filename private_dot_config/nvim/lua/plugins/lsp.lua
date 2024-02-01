@@ -21,22 +21,31 @@ return {
                 auto_close = true,
             })
 
-            local opts = function(desc) return { silent = true, desc = desc } end
-            vim.keymap.set("n", "<leader>x", function() trouble.open() end, opts("Toggle trouble"))
-            vim.keymap.set("n", "[d", function() trouble.next({skip_groups = true, jump = true}) end, opts("Go to next diagnostic"))
-            vim.keymap.set("n", "]d", function() trouble.previous({skip_groups = true, jump = true}) end, opts("Go to prev diagnostic"))
+            local opts = function(desc) return { silent = true, desc = desc, noremap = false } end
+            vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end, opts("Toggle trouble"))
+            vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, opts("Toggle Workspace Diagnostics"))
+            vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, opts("Toggle Document Diagnostics"))
+            vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end, opts("Toggle Quickfix"))
+            vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end, opts("Toggle Location list"))
+            vim.keymap.set("n", "[[", function() trouble.next({skip_groups = true, jump = true}) end, opts("Go to next diagnostic"))
+            vim.keymap.set("n", "]]", function() trouble.previous({skip_groups = true, jump = true}) end, opts("Go to prev diagnostic"))
         end,
     },
     -- Generally improved UI for LSP with many extra features.
     -- Default keybindings: https://github.com/ray-x/navigator.lua#default-keymaps
     {
         'ray-x/navigator.lua',
+        event = 'VeryLazy',
         dependencies = {
-            { 'ray-x/guihua.lua',     run = 'cd lua/fzy && make' },
+            {
+                'ray-x/guihua.lua',
+                run = 'cd lua/fzy && make',
+            },
             { 'neovim/nvim-lspconfig' },
         },
         config = function()
             require('navigator').setup({
+                transparency = 100,
                 lsp = {
                     -- This seems to fuckup Go formatting:
                     format_on_save = false,
