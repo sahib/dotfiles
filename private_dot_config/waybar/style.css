@@ -1,9 +1,9 @@
 /* Color palette - NOTE: This is adjusted by the light/dark mode switch script .
  * Do not change the color names, unless you change that script too!
  * */
-@define-color main_bg #ffffff;
-@define-color main_fg #000000;
-@define-color text_fg #000000;
+@define-color main_bg #0a0c10;
+@define-color main_fg #ffffff;
+@define-color text_fg #ffffff;
 
 
 /* Reset all styles */

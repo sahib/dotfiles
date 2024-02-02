@@ -153,7 +153,28 @@ sway_toggle() {
 
     # Also exchange on disk, so next start of sway is correct too:
     rm -f "${SWAY_THEME_CURR}"
-    ln -sfr "${next_theme}"  "${SWAY_THEME_CURR}"
+    ln -sfr "${next_theme}" "${SWAY_THEME_CURR}"
+}
+
+WALLPAPER_LIGHT="$HOME/wallpaper_light.jpg"
+WALLPAPER_DARK="$HOME/wallpaper_dark.jpg"
+WALLPAPER_CURR="$HOME/wallpaper.jpg"
+
+wallpaper_toggle() {
+    local next_path
+    local curr_path
+
+    curr_path="$(readlink "$WALLPAPER_CURR")"
+    if [ "$curr_path" = "wallpaper_dark.jpg" ]; then
+        next_path="${WALLPAPER_LIGHT}"
+    else
+        next_path="${WALLPAPER_DARK}"
+    fi
+
+    swaymsg output '*' bg "${next_path}" fill
+
+    rm -f "${WALLPAPER_CURR}"
+    ln -sfr "${next_path}" "${WALLPAPER_CURR}"
 }
 
 
@@ -164,3 +185,4 @@ kitty_toggle
 waybar_toggle
 gtk_toggle
 sway_toggle
+wallpaper_toggle

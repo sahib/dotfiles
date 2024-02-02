@@ -26,3 +26,6 @@
 [alias]
     pfush = push
     pfusch = push
+
+[core]
+	editor = nvim
