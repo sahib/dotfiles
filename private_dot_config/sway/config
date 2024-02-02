@@ -123,7 +123,7 @@ bindsym $mod+r mode "resize"
 
 include theme_current.cfg
 
-default_border pixel 2
+default_border pixel 1
 default_floating_border normal
 titlebar_border_thickness 0
 hide_edge_borders both
