@@ -27,6 +27,8 @@ I'm one of the few odd people that use light colorschemes for most things. That'
 
 ![light theme](./screenshot.png)
 
+I can also switch to a (very) dark theme using `Mod+F10`. The script behind this can be found in `bin/`.
+
 Editor
 ------
 
