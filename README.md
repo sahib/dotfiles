@@ -46,7 +46,7 @@ Packages
 * **zoxide**: Directory autojumpger.
 * **nm-applet**: Networkmanager interface.
 * **udiskie2**: Automounter.
-* **most**: Pager.
+* **moar**: Pager.
 * **zathura**: PDF viewer (muPDF backend)
 * **eza**: Better ls
 * **mako**: Notification manager.
