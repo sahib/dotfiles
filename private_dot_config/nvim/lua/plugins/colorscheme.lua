@@ -2,15 +2,17 @@
 return {
     {
         'projekt0n/github-nvim-theme',
-        event = 'VeryLazy',
+        lazy = false, -- needs to be done very early.
         config = function()
             require('github-theme').setup({})
-            --vim.cmd('colorscheme github_light')
-            vim.cmd('colorscheme github_dark_high_contrast')
+            vim.cmd('colorscheme github_light')
         end,
     }, {
         "https://git.sr.ht/~swaits/colorsaver.nvim",
-        lazy = true,
+        dependencies = {
+            'projekt0n/github-nvim-theme',
+        },
+        lazy = false, -- needs to be done very early.
         event = "VimEnter",
         opts = {
             -- This will make sure to save the colorscheme that we used last

@@ -18,7 +18,7 @@ export XTERM="kitty"
 export TERM=xterm-kitty
 export TERMINAL="$XTERM"
 export GPG_TTY=$(tty)
-export PAGER="most"
+export PAGER="moar"
 
 # Go stuff:
 export GOPATH=$HOME/go

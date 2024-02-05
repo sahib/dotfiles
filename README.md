@@ -27,6 +27,8 @@ I'm one of the few odd people that use light colorschemes for most things. That'
 
 ![light theme](./screenshot.png)
 
+I can also switch to a (very) dark theme using `Mod+F10`. The script behind this can be found in `bin/`.
+
 Editor
 ------
 
@@ -44,7 +46,7 @@ Packages
 * **zoxide**: Directory autojumpger.
 * **nm-applet**: Networkmanager interface.
 * **udiskie2**: Automounter.
-* **most**: Pager.
+* **moar**: Pager.
 * **zathura**: PDF viewer (muPDF backend)
 * **eza**: Better ls
 * **mako**: Notification manager.
