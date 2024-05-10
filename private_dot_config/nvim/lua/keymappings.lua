@@ -14,3 +14,6 @@ vim.api.nvim_set_keymap('n', '<C-q>',     '<Cmd>wincmd q<CR>', opts)
 -- I just like those fancy guillemets, don't judge:
 vim.api.nvim_set_keymap('i', '<Leader><', '«', opts)
 vim.api.nvim_set_keymap('i', '<Leader>>', '»', opts)
+
+-- Easy copying in visual mode:
+vim.api.nvim_set_keymap('v', 'q', '"+y', opts)

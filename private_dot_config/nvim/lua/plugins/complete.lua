@@ -86,7 +86,7 @@ local config = function()
     })
 
     -- Set up lspconfig.
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
     require('lspconfig')['gopls'].setup {
         cmd = {'gopls'},
         capabilities = capabilities,
@@ -104,6 +104,8 @@ local config = function()
             usePlaceholders = true,
         }
     }
+    vim.cmd("autocmd FileType guihua lua require('cmp').setup.buffer { enabled = false }")
+    vim.cmd("autocmd FileType guihua_rust lua require('cmp').setup.buffer { enabled = false }")
 end
 
 return {

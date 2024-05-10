@@ -57,7 +57,7 @@ return {
                         sign = false,
                     },
                     -- Don't open the damn quick fix window.
-                    display_diagnostic_qf = false,
+                    display_diagnostic_qf = 'trouble',
                 },
             })
 

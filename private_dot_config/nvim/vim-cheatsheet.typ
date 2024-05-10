@@ -15,6 +15,7 @@
 #columns(2, gutter: 12pt)[
 == General
 
+- `q` - Copy selected text.
 - `gA` - Align text:
   - `s`: Set split pattern.
   - `j`: Justify left/right
@@ -89,10 +90,12 @@
 == Telescope
 
 - `<leader>b` - Find buffer.
-- `<leader>s` - Find symbols.
+- `<leader>S` - Find symbols in workspace.
+- `<leader>s` - Find symbols in document.
 - `<leader>f` - Find files.
 - `<leader>F` - Find global files (frecency).
-- `<leader>g` - Find string under cursor.
+- `<leader>q` - Live grep.
+- `<leader>Q` - Find string under cursor.
 - `<leader>h` - Find help topic.
 - `s / S` - jump/select based on search pattern.
 - `<C-v>` - Open find as vsplit.

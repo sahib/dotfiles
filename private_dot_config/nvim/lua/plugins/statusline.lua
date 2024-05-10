@@ -88,7 +88,17 @@ return {
                         },
                         'searchcount',
                         'selectioncount',
-                    }
+                    },
+                    lualine_z = {
+                        {
+                            "filename",
+                            path = 1,
+                            symbols = {
+                                unnamed = ""
+                            },
+                        },
+                        "location"
+                    },
                 }
             })
 

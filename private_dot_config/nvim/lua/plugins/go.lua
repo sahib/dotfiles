@@ -22,6 +22,9 @@ return {
             require("go").setup({
                 -- Alter, willst du Stress? Ja.
                 trouble = true,
+                lsp_cfg = true,
+                lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+                lsp_on_attach = true, -- use on_attach from go.nvim
             })
         end,
         event = { "CmdlineEnter" },

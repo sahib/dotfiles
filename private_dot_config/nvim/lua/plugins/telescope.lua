@@ -37,12 +37,14 @@ return {
             })
 
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<Leader>f', builtin.find_files, { desc = 'Find files' })
-            vim.keymap.set('n', '<Leader>f', builtin.find_files, { desc = 'Find files' })
-            vim.keymap.set('n', '<Leader>g', builtin.live_grep, { desc = 'Find string under cursor' })
-            vim.keymap.set('n', '<Leader>s', builtin.lsp_document_symbols, { desc = 'List document symbols' })
-            vim.keymap.set('n', '<Leader>S', builtin.lsp_workspace_symbols, { desc = 'List workspace symbols' })
+            vim.keymap.set('n', '<Leader>f', function() builtin.find_files({}) end, { desc = 'Find files' })
+            vim.keymap.set('n', '<Leader>q', builtin.live_grep, { desc = 'Live grep' })
+            vim.keymap.set('n', '<Leader>Q', builtin.grep_string, { desc = 'Find string under cursor' })
             vim.keymap.set('n', '<Leader>h', builtin.help_tags, { desc = 'List help tags' })
+
+            -- Workaround for stupid issue: https://github.com/nvim-telescope/telescope.nvim/issues/964
+            vim.keymap.set('n', '<Leader>S', builtin.lsp_document_symbols, { desc = 'List document symbols' })
+            vim.keymap.set('n', '<Leader>s', function() builtin.lsp_workspace_symbols({query = "."}) end, { desc = 'List workspace symbols' })
 
             -- Load extension for snippets:
             require('telescope').load_extension('luasnip')

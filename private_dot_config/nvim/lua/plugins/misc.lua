@@ -218,7 +218,7 @@ return {
                 },
                 notify = {
                     enabled = true,
-                    view = 'virtualtext',
+                    view = 'notify',
                 },
                 -- you can enable a preset for easier configuration
                 presets = {
