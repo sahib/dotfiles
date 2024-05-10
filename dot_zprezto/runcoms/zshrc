@@ -34,6 +34,7 @@ ulimit -c unlimited
 
 # Because my fingers don't learn new tool names anymore:
 alias ag=rg
+alias ranger=lf
 alias vi=nvim
 alias vim=nvim
 alias gdk='git difftool --no-symlinks --dir-diff'
