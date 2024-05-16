@@ -15,5 +15,10 @@ vim.api.nvim_set_keymap('n', '<C-q>',     '<Cmd>wincmd q<CR>', opts)
 vim.api.nvim_set_keymap('i', '<Leader><', '«', opts)
 vim.api.nvim_set_keymap('i', '<Leader>>', '»', opts)
 
+-- Center the screen when hopping through search results:
+vim.keymap.set("n", "n", "nzzzv", { desc = "Fwd  search '/' or '?'" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Back search '/' or '?'" })
+vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>', { desc = "Clear search" })
+
 -- Easy copying in visual mode:
 vim.api.nvim_set_keymap('v', 'q', '"+y', opts)

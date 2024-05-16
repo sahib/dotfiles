@@ -87,6 +87,18 @@ local config = function()
 
     -- Set up lspconfig.
     local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    require('lspconfig')['elmls'].setup {
+        capabilities = capabilities,
+        on_attach = require("lsp-format").on_attach,
+    }
+    require('lspconfig')['bashls'].setup {
+        capabilities = capabilities,
+        on_attach = require("lsp-format").on_attach,
+    }
+    require('lspconfig')['cssls'].setup {
+        capabilities = capabilities,
+        on_attach = require("lsp-format").on_attach,
+    }
     require('lspconfig')['gopls'].setup {
         cmd = {'gopls'},
         capabilities = capabilities,
@@ -139,6 +151,7 @@ return {
             'hrsh7th/cmp-calc',
             "onsails/lspkind.nvim",
             'doxnit/cmp-luasnip-choice',
+            'lukas-reineke/lsp-format.nvim',
         },
         config = config,
     },

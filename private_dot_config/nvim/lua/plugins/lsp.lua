@@ -31,24 +31,28 @@ return {
             vim.keymap.set("n", "]]", function() trouble.previous({skip_groups = true, jump = true}) end, opts("Go to prev diagnostic"))
         end,
     },
+    {
+        'lukas-reineke/lsp-format.nvim',
+        config = function()
+            require("lsp-format").setup {}
+        end,
+    },
     -- Generally improved UI for LSP with many extra features.
     -- Default keybindings: https://github.com/ray-x/navigator.lua#default-keymaps
     {
         'ray-x/navigator.lua',
         event = 'VeryLazy',
         dependencies = {
-            {
-                'ray-x/guihua.lua',
-                run = 'cd lua/fzy && make',
-            },
+            { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
             { 'neovim/nvim-lspconfig' },
+            { 'lukas-reineke/lsp-format.nvim' }
         },
         config = function()
             require('navigator').setup({
                 transparency = 100,
                 lsp = {
                     -- This seems to fuckup Go formatting:
-                    format_on_save = false,
+                    format_on_save = true,
                     -- Do not show the sign on the sign column:
                     code_action = {
                         sign = false,

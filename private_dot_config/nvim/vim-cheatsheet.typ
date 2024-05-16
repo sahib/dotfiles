@@ -26,6 +26,7 @@
   - `a` - Add file.
   - `C` - Use as root node.
   - `P` - Print absolute path.
+  - `Ctrl-L` - Clear search result.
 
 == Version control
 
