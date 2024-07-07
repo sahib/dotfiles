@@ -1,5 +1,2 @@
--- vim.loader.enable()
-require('basics')
-require('globals')
-require('keymappings')
-require('plugin')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

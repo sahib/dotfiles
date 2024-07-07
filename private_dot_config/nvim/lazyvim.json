@@ -1,0 +1,24 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.dap.core",
+    "lazyvim.plugins.extras.editor.dial",
+    "lazyvim.plugins.extras.editor.inc-rename",
+    "lazyvim.plugins.extras.editor.refactoring",
+    "lazyvim.plugins.extras.lang.docker",
+    "lazyvim.plugins.extras.lang.elm",
+    "lazyvim.plugins.extras.lang.git",
+    "lazyvim.plugins.extras.lang.gleam",
+    "lazyvim.plugins.extras.lang.go",
+    "lazyvim.plugins.extras.lang.json",
+    "lazyvim.plugins.extras.lang.markdown",
+    "lazyvim.plugins.extras.lang.sql",
+    "lazyvim.plugins.extras.lang.toml",
+    "lazyvim.plugins.extras.lang.yaml",
+    "lazyvim.plugins.extras.test.core",
+    "lazyvim.plugins.extras.ui.alpha"
+  ],
+  "news": {
+    "NEWS.md": "6077"
+  },
+  "version": 6
+}
