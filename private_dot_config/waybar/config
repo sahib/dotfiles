@@ -101,7 +101,7 @@
 		"states": {
 			"good": 95,
 			"warning": 30,
-			"critical": 15
+			"critical": 1
 		},
 		"format": "{icon}  {capacity}%",
 		"format-icons": [
@@ -139,9 +139,9 @@
 		"exec": "~/.config/waybar/modules/playerctl.sh",
 		"exec-if": "pgrep playerctl",
 		"escape": true,
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
+        "on-click": "playerctl -p \"$(playerctl -l | grep '\\(ncspot\\|spotify\\)')\" play-pause",
+        "on-scroll-up": "playerctl -p \"$(playerctl -l | grep '\\(ncspot\\|spotify\\)')\" next",
+        "on-scroll-down": "playerctl -p \"$(playerctl -l | grep '\\(ncspot\\|spotify\\)')\" previous"
 	},
     "network": {
         "format-ethernet": "",

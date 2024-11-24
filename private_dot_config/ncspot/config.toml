@@ -1,0 +1,30 @@
+use_nerdfont = true
+notify = true
+
+[notification_format]
+title = "%title"
+body = "%artists - %album"
+
+[credentials]
+username_cmd = "echo sahib@online.de"
+password_cmd = "pass web/spotify/sahib@online.de"
+
+[theme]
+#background = "#282828"
+background = "default"
+primary = "#EBDBB2"
+secondary = "#D5C4A1"
+title = "#D65D0E"
+playing = "#B16286"
+playing_selected = "#458588"
+playing_bg = "#1D2021"
+highlight = "#D79921"
+highlight_bg = "#1D2021"
+error = "#FBF1C7"
+error_bg = "#CC241D"
+statusbar = "#282828"
+statusbar_progress = "#689D6A"
+statusbar_bg = "#98971A"
+cmdline = "#1D2021"
+cmdline_bg = "#FE8019"
+search_match = "#fabd2f"

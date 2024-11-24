@@ -31,11 +31,22 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
-# split in vertical orientation
-bindsym $mod+v split v
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# # split in horizontal orientation
+# bindsym $mod+h split h
+#
+# # split in vertical orientation
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -150,14 +161,14 @@ bindsym $mod+F4 exec mpv --fullscreen ~/clips/aufs_klo.webm
 bindsym $mod+F5 exec mpv --fullscreen --length=2 ~/clips/badumts.mp4
 bindsym $mod+F6 exec mpv --fullscreen ~/clips/krasses_pferd.webm
 
-bindsym $mod+F7   exec playerctl -p playerctld previous
-bindsym $mod+F8   exec playerctl -p playerctld play-pause
-bindsym $mod+F9   exec playerctl -p playerctld next
+bindsym $mod+F7   exec playerctl previous
+bindsym $mod+F8   exec playerctl play-pause
+bindsym $mod+F9   exec playerctl next
+bindsym $mod+F11  exec playerctl volume -0.1
+bindsym $mod+F12  exec playerctl volume +0.2
 bindsym $mod+F10  exec ~/bin/toggle-dark-light.sh
-bindsym $mod+F11  exec playerctl -p playerctld volume -0.1
-bindsym $mod+F12  exec playerctl -p playerctld volume +0.2
 
-bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+bindsym $mod+Shift+p exec grimshot copy area
 
 # Dynamically change the wallpaper based on the day hour:
 # exec_always ~/wallday/wallday.sh
@@ -187,7 +198,7 @@ output HDMI-A-2 mode 3840x2160 pos 1920,0  scale 1.5
 input * xkb_layout us-german-umlaut
 
 # Increase scrolling speed:
-input type:pointer scroll_factor 2.0
+input type:pointer scroll_factor 3
 
 # Disable the laptop output when the lid is closed
 # (and another monitor is attached...)
@@ -227,11 +238,6 @@ exec shikane
 # NetworkManager tray icon:
 exec nm-applet --indicator
 
-# HACK: xdg-desktop-portal does not see WAYLAND_DISPLAY for some reason. It's set by sway itself,
-#       so we need to convince it that it's indeed set. Required for screen sharing.
-exec_always systemctl --user set-environment "WAYLAND_DISPLAY=${WAYLAND_DISPLAY}"
-exec_always systemctl --user restart  xdg-desktop-portal
-
 # Set gtk theme / icon theme etc. here.
 exec_always {
     gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Light-Maia'
@@ -256,3 +262,35 @@ bindsym --release Caps_Lock exec swayosd --caps-lock
 bindsym XF86MonBrightnessUp exec swayosd --brightness raise
 # Brightness lower
 bindsym XF86MonBrightnessDown exec swayosd --brightness lower
+
+
+## SwayFX
+
+# blur enable
+# corner_radius 10
+# shadows enable
+# shadows_on_csd enable
+# layer_effects "waybar" blur enable; shadows enable; corner_radius 6
+# default_dim_inactive 0.2
+
+
+
+### Appearance
+# window corner radius in px
+corner_radius 10
+
+# Window background blur
+blur enable
+blur_xray off
+blur_passes 2
+blur_radius 5
+
+shadows enable
+shadows_on_csd enable
+shadow_blur_radius 20
+shadow_color #0000007F
+
+# inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
+default_dim_inactive 0.2
+dim_inactive_colors.unfocused #000000FF
+dim_inactive_colors.urgent #900000FF
