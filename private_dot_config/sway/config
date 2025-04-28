@@ -36,6 +36,12 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
 # # split in horizontal orientation
 # bindsym $mod+h split h
 #
@@ -156,13 +162,15 @@ bindsym $mod+F4 exec mpv --fullscreen ~/clips/aufs_klo.webm
 bindsym $mod+F5 exec mpv --fullscreen --length=2 ~/clips/badumts.mp4
 bindsym $mod+F6 exec mpv --fullscreen ~/clips/krasses_pferd.webm
 
-bindsym $mod+F7   exec playerctl -p playerctld previous
-bindsym $mod+F8   exec playerctl -p playerctld play-pause
-bindsym $mod+F9   exec playerctl -p playerctld next
+bindsym $mod+F7   exec playerctl previous
+bindsym $mod+F8   exec playerctl play-pause
+bindsym $mod+F9   exec playerctl next
+bindsym $mod+F11  exec playerctl volume -0.1
+bindsym $mod+F12  exec playerctl volume +0.2
 bindsym $mod+F10  exec ~/bin/toggle-dark-light.sh
+
 # bindsym $mod+F11  exec playerctl -p playerctld volume -0.1
 bindsym $mod+F12  exec ~/bin/toggle-audio-sink.sh
-
 bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy
 
 # Dynamically change the wallpaper based on the day hour:
@@ -181,7 +189,7 @@ output "*" bg ~/wallpaper.jpg fill
 input * xkb_layout us-german-umlaut
 
 # Increase scrolling speed:
-input type:pointer scroll_factor 2.0
+input type:pointer scroll_factor 3
 
 # Disable the laptop output when the lid is closed
 # (and another monitor is attached...)
@@ -221,11 +229,6 @@ exec gammastep -m wayland -l 49.9122:11.0088
 # NetworkManager tray icon:
 exec nm-applet --indicator
 
-# HACK: xdg-desktop-portal does not see WAYLAND_DISPLAY for some reason. It's set by sway itself,
-#       so we need to convince it that it's indeed set. Required for screen sharing.
-exec_always systemctl --user set-environment "WAYLAND_DISPLAY=${WAYLAND_DISPLAY}"
-exec_always systemctl --user restart  xdg-desktop-portal
-
 # Set gtk theme / icon theme etc. here.
 exec_always {
     gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Light-Maia'
@@ -244,3 +247,33 @@ bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
 
 bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
 bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
+
+## SwayFX
+
+# blur enable
+# corner_radius 10
+# shadows enable
+# shadows_on_csd enable
+# layer_effects "waybar" blur enable; shadows enable; corner_radius 6
+# default_dim_inactive 0.2
+
+
+### Appearance
+# window corner radius in px
+corner_radius 10
+
+# Window background blur
+blur enable
+blur_xray off
+blur_passes 2
+blur_radius 5
+
+shadows enable
+shadows_on_csd enable
+shadow_blur_radius 20
+shadow_color #0000007F
+
+# inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
+default_dim_inactive 0.2
+dim_inactive_colors.unfocused #000000FF
+dim_inactive_colors.urgent #900000FF
