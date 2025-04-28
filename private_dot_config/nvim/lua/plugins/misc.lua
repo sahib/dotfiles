@@ -1,11 +1,6 @@
 -- TODO: Disable neotree
 -- TODO: Support for visual treesitter select.
 return {
-  -- smooth scrolling on page up/down:
-  {
-    "psliwka/vim-smoothie",
-  },
-
   -- show recent files on empty nvim command.
   -- Split/Join support (gS / gJ)
   {
@@ -106,5 +101,19 @@ return {
 
       vim.keymap.set("n", "<Leader>a", "<Cmd>Other<CR>", { silent = true, desc = "Go to test file or back" })
     end,
+  },
+  {
+    "zk-org/zk-nvim",
+    config = function()
+      require("zk").setup({
+        picker = "fzf_lua",
+      })
+    end,
+  },
+  {
+    "chomosuke/typst-preview.nvim",
+    lazy = false, -- or ft = 'typst'
+    version = "1.*",
+    opts = {}, -- lazy.nvim will implicitly calls `setup {}`
   },
 }

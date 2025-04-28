@@ -25,7 +25,7 @@ local lualine_theme = function()
     command = tint(p.magenta.bright),
     visual = tint(p.yellow.base),
     replace = tint(p.red.base),
-    terminal = tint(p.orange),
+    -- terminal = tint(p.orange),
     inactive = {
       a = inactive_hi,
       b = inactive_hi,
@@ -50,7 +50,7 @@ return {
         section_separators = { left = "", right = "" },
         globalstatus = true,
         disabled_filetypes = { "NVimTree", "startup" },
-        theme = lualine_theme,
+        -- theme = lualine_theme,
       },
     },
   },

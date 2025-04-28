@@ -13,9 +13,12 @@ return {
           "icon",
           "size",
         },
+        float = {
+          padding = 8,
+        },
       })
 
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+      vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
       -- Open the current buffers parent dir (or cwd if not known):
       vim.keymap.set("n", "<leader>n", function()

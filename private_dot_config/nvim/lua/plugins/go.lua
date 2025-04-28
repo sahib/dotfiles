@@ -15,4 +15,27 @@ return {
       vim.keymap.set("n", "<Leader>gcc", goc.ClearCoverage, { desc = "Clear coverage", silent = true })
     end,
   },
+  {
+    "fredrikaverpil/godoc.nvim",
+    version = "*",
+    dependencies = {
+      { "nvim-telescope/telescope.nvim" }, -- optional
+      { "folke/snacks.nvim" }, -- optional
+      { "echasnovski/mini.pick" }, -- optional
+      { "ibhagwan/fzf-lua" }, -- optional
+      {
+        "nvim-treesitter/nvim-treesitter",
+        opts = {
+          ensure_installed = { "go" },
+        },
+      },
+    },
+    build = "go install github.com/lotusirous/gostdsym/stdsym@latest", -- optional
+    cmd = { "GoDoc" }, -- optional
+    opts = {
+      picker = {
+        type = "snacks",
+      },
+    },
+  },
 }

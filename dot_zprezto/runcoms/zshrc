@@ -13,6 +13,7 @@ fi
 # Customize to your needs:
 # General setup:
 export EDITOR="nvim"
+export VISUAL="${EDITOR}"
 export BROWSER=firefox
 export XTERM="kitty"
 export TERM=xterm-kitty
@@ -68,3 +69,7 @@ prompt_current_time() {
 }
 
 export PROMPT_LEAN_LEFT="prompt_current_time"
+export PATH="$PATH:$HOME/.cargo/bin"
+export ZK_NOTEBOOK_DIR="$HOME/zk"
+
+[[ -s "/home/chris/.gvm/scripts/gvm" ]] && source "/home/chris/.gvm/scripts/gvm"

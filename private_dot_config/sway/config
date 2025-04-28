@@ -31,11 +31,16 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
-# split in vertical orientation
-bindsym $mod+v split v
+# # split in horizontal orientation
+# bindsym $mod+h split h
+#
+# # split in vertical orientation
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -122,6 +127,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 include theme_current.cfg
+include /etc/sway/config.d/*
 
 default_border pixel 1
 default_floating_border normal
@@ -154,10 +160,10 @@ bindsym $mod+F7   exec playerctl -p playerctld previous
 bindsym $mod+F8   exec playerctl -p playerctld play-pause
 bindsym $mod+F9   exec playerctl -p playerctld next
 bindsym $mod+F10  exec ~/bin/toggle-dark-light.sh
-bindsym $mod+F11  exec playerctl -p playerctld volume -0.1
-bindsym $mod+F12  exec playerctl -p playerctld volume +0.2
+# bindsym $mod+F11  exec playerctl -p playerctld volume -0.1
+bindsym $mod+F12  exec ~/bin/toggle-audio-sink.sh
 
-bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy
 
 # Dynamically change the wallpaper based on the day hour:
 # exec_always ~/wallday/wallday.sh
@@ -172,18 +178,6 @@ exec mako
 # Uncomment this if you want to set a static wallpaper:
 output "*" bg ~/wallpaper.jpg fill
 
-# Private laptop screen:
-output 'Unknown 0x0561 0x00000000'           mode 1920x1080 pos 0,0
-
-# Private office monitor:
-output 'Hewlett Packard HP ZR24w CNT12211F4' mode 1920x1200 pos 1920,0
-
-# Work:
-output DPI-2    mode 1920x1200 pos 1920,0
-output DPI-3    mode 3840x2160 pos 1920,0  scale 1.5
-output DPI-5    mode 3840x2160 pos 1920,0  scale 1.5
-output HDMI-A-2 mode 3840x2160 pos 1920,0  scale 1.5
-
 input * xkb_layout us-german-umlaut
 
 # Increase scrolling speed:
@@ -194,6 +188,9 @@ input type:pointer scroll_factor 2.0
 set $laptop_output eDP-1
 bindswitch lid:on output $laptop_output disable
 bindswitch lid:off output $laptop_output enable
+
+# Make sure the laptop screen is disabled also on sway restart:
+exec_always cat /proc/acpi/button/lid/LID/state | awk '{print $2}' | grep -q 'closed' && swaymsg output eDP-1 disable
 
 ######################################
 # APPLICATION SPECIFIC CONFIGURATION #
@@ -219,10 +216,7 @@ exec udiskie --tray --notify
 exec swayidle -w timeout 180 'swaylock -f' before-sleep 'swaylock -f'
 
 # Redshift the display in the evening:
-exec gammastep -m wayland -l 48.36:10.89
-
-# Screen profile saver:
-exec shikane
+exec gammastep -m wayland -l 49.9122:11.0088
 
 # NetworkManager tray icon:
 exec nm-applet --indicator
@@ -238,21 +232,15 @@ exec_always {
 }
 
 # OSD window
-exec swayosd
+exec swayosd-server
 
-# Sink volume raise
-bindsym XF86AudioRaiseVolume exec swayosd --output-volume raise
-# Sink volume lower
-bindsym XF86AudioLowerVolume exec  swayosd --output-volume lower
-# Sink volume toggle mute
-bindsym XF86AudioMute exec swayosd --output-volume mute-toggle
-# Source volume toggle mute
-bindsym XF86AudioMicMute exec swayosd --input-volume mute-toggle
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise  --max-volume 150
+bindsym XF86AudioLowerVolume exec  swayosd-client --output-volume lower --max-volume 150
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
 
-# Capslock
-bindsym --release Caps_Lock exec swayosd --caps-lock
+# Capslock (If you don't want to use the backend)
+# bindsym --release Caps_Lock exec swayosd-client --caps-lock
 
-# Brightness raise
-bindsym XF86MonBrightnessUp exec swayosd --brightness raise
-# Brightness lower
-bindsym XF86MonBrightnessDown exec swayosd --brightness lower
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
