@@ -85,11 +85,11 @@ gtk_toggle() {
     if [ "${current_theme}" = "${GTK_THEME_DARK}" ]; then
         echo "-- gtk: switching to ${GTK_THEME_LIGHT}"
         gsettings set org.gnome.desktop.interface gtk-theme "${GTK_THEME_LIGHT}"
-        gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+        gsettings set org.gnome.desktop.interface color-scheme prefer-light
     else
         echo "-- gtk: switching to ${GTK_THEME_DARK}"
         gsettings set org.gnome.desktop.interface gtk-theme "${GTK_THEME_DARK}"
-        gsettings set org.gnome.desktop.interface color-scheme prefer-light
+        gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     fi
 }
 
