@@ -15,8 +15,14 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec wofi --allow-images --hide-scroll --show drun --lines 10 --style ~/.config/sway/wofi.css
+# bindsym $mod+d exec wofi --allow-images --hide-scroll --show drun --lines 10 --style ~/.config/sway/wofi.css
+bindsym $mod+d exec "rofi -combi-modes window,drun,ssh -font 'JetBrainsMono Nerd Font 13' -show combi -show-icons -modes combi"
+
+# simple screenshot:
 bindsym $mod+Shift+s exec grimshot --notify copy area
+
+# allow editing the screenshot:
+bindsym $mod+Shift+p exec grimshot save area - | satty --filename - --fullscreen  --early-exit --initial-tool arrow
 
 # change focus
 bindsym $mod+Left focus left
@@ -35,12 +41,6 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
 
 # # split in horizontal orientation
 # bindsym $mod+h split h
@@ -162,22 +162,18 @@ bindsym $mod+F4 exec mpv --fullscreen ~/clips/aufs_klo.webm
 bindsym $mod+F5 exec mpv --fullscreen --length=2 ~/clips/badumts.mp4
 bindsym $mod+F6 exec mpv --fullscreen ~/clips/krasses_pferd.webm
 
-bindsym $mod+F7   exec playerctl previous
-bindsym $mod+F8   exec playerctl play-pause
-bindsym $mod+F9   exec playerctl next
-bindsym $mod+F11  exec playerctl volume -0.1
-bindsym $mod+F12  exec playerctl volume +0.2
+bindsym $mod+F7   exec playerctl -p "$(~/.config/waybar/modules/playerctl.sh --print-player)" previous
+bindsym $mod+F8   exec playerctl -p "$(~/.config/waybar/modules/playerctl.sh --print-player)" play-pause
+bindsym $mod+F9   exec playerctl -p "$(~/.config/waybar/modules/playerctl.sh --print-player)" next
 bindsym $mod+F10  exec ~/bin/toggle-dark-light.sh
-
-# bindsym $mod+F11  exec playerctl -p playerctld volume -0.1
 bindsym $mod+F12  exec ~/bin/toggle-audio-sink.sh
-bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy
 
 # Dynamically change the wallpaper based on the day hour:
 # exec_always ~/wallday/wallday.sh
 
 # Somehow needed to fix a lag when starting applications:
 exec_always dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+exec_always polkit-gnome-authentication-agent-1
 
 # Execute this notification manager always:
 # (does stop when started twice)
@@ -189,7 +185,7 @@ output "*" bg ~/wallpaper.jpg fill
 input * xkb_layout us-german-umlaut
 
 # Increase scrolling speed:
-input type:pointer scroll_factor 3
+input type:pointer scroll_factor 2.0
 
 # Disable the laptop output when the lid is closed
 # (and another monitor is attached...)
@@ -213,7 +209,7 @@ assign [class="[Ss]ignal"]  workspace $workspace4
 
 # Autostart programs I use anyways:
 exec spotify
-exec signal-desktop
+exec signal-desktop --password-store='gnome-libsecret'
 exec firefox
 
 # Start the automount daemon:
@@ -228,6 +224,11 @@ exec gammastep -m wayland -l 49.9122:11.0088
 
 # NetworkManager tray icon:
 exec nm-applet --indicator
+
+# HACK: xdg-desktop-portal does not see WAYLAND_DISPLAY for some reason. It's set by sway itself,
+#       so we need to convince it that it's indeed set. Required for screen sharing.
+exec_always systemctl --user set-environment "WAYLAND_DISPLAY=${WAYLAND_DISPLAY}"
+exec_always systemctl --user restart  xdg-desktop-portal
 
 # Set gtk theme / icon theme etc. here.
 exec_always {
@@ -247,33 +248,3 @@ bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
 
 bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
 bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
-
-## SwayFX
-
-# blur enable
-# corner_radius 10
-# shadows enable
-# shadows_on_csd enable
-# layer_effects "waybar" blur enable; shadows enable; corner_radius 6
-# default_dim_inactive 0.2
-
-
-### Appearance
-# window corner radius in px
-corner_radius 10
-
-# Window background blur
-blur enable
-blur_xray off
-blur_passes 2
-blur_radius 5
-
-shadows enable
-shadows_on_csd enable
-shadow_blur_radius 20
-shadow_color #0000007F
-
-# inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
-default_dim_inactive 0.2
-dim_inactive_colors.unfocused #000000FF
-dim_inactive_colors.urgent #900000FF
